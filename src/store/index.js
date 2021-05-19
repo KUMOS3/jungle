@@ -18,6 +18,8 @@ export default new Vuex.Store({
     movieItem: null,
     // 팝업창을 띄울 movie
     selectedMovie: null,
+    // 프로필에 사용될 사용자 정보
+    userInfo: null,
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -29,6 +31,9 @@ export default new Vuex.Store({
     GET_MOVIES: function (state, data) {
       state.movies = data
     },
+    GET_USER_INFO: function (state, data) {
+      state.userInfo = data
+    }
   },
   actions: {
     getJWT: function(context, credential) {
@@ -40,6 +45,7 @@ export default new Vuex.Store({
       })
       .then((res) => {
         context.commit('SAVE_JWT', res.data.token)
+        console.log(res.data)
       })
       .catch((err) => {
         console.log(err)
@@ -65,6 +71,24 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    getUserInfo: function (context, userid) {
+      console.log(context, userid)
+      axios({
+        method: 'get',
+        url: `${SERVER_URL}/accounts/${userid}/profile`,
+        data: userid,
+        headers: {
+          Authorization: `JWT ${context.state.userToken}`
+        }
+      })
+      .then((res) => {
+        console.log(res)
+        context.commit('GET_USER_INFO', res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
   },
   getters: {
     decodedToken: function (state, ) {
@@ -78,13 +102,13 @@ export default new Vuex.Store({
     movies: function (state) {
       return state.movies
     },
-    movieTitle: function (state) {
-      console.log(state.movieItem.title)
-      console.log(state.movieItem)
-    },
-    movieContent: function (state) {
-      console.log(state.movieItem)
-    },
+    // movieTitle: function (state) {
+    //   console.log(state.movieItem.title)
+    //   console.log(state.movieItem)
+    // },
+    // movieContent: function (state) {
+    //   console.log(state.movieItem)
+    // },
     // movieOverview: function (state) {
     //   console.log(state.selectedMovie.overview)
     // },

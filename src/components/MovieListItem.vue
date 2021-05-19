@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 영화 포스터 -->
-    <button @click="showDetail">{{ movieTitle }}</button>
+    <button @click="showDetail">{{ moviePosterPath }}</button>
     <MovieDetail @close-detail="closeDetail" v-show="modalStatus" :movie="movie"/>
   </div>
 </template>
@@ -32,8 +32,8 @@ export default {
     }
   },
   computed:{
-    movieTitle: function () {
-      return this.movie.title
+    moviePosterPath: function () {
+      return this.movie.poster_path
     },
     ...mapGetters([
       // 'moviePosterPath',

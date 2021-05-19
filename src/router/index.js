@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '@/views/Login'
+import Profile from '@/views/Profile'
 
 Vue.use(VueRouter)
 
@@ -24,11 +25,11 @@ const routes = [
     name: 'Login',
     component: Login
   },
-  // {
-  //   path: '/movies/:id',
-  //   name: 'Detail',
-  //   component: Detail
-  // },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
+  },
 ]
 
 const router = new VueRouter({
