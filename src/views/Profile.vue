@@ -1,12 +1,14 @@
 <template>
   <div>
     <h1>MyProfile</h1>
-    <p>{{ this.$store.state.userInfo }}</p>
-    <p>username:  {{ this.$store.state.userInfo.username }}</p>
-    <p>nickname:  {{ this.$store.state.userInfo.nickname }}</p>
-    <p>date_joined:  {{ this.$store.state.userInfo.date_joined }}</p>
-    <p>birth_year:  {{ this.$store.state.userInfo.birth_year }}</p>
-    <p>favorite_movie:  {{ this.$store.state.userInfo.favorite_movie }}</p>
+    <div v-if="this.$store.state.userInfo">
+      <p>{{ this.$store.state.userInfo }}</p>
+      <p>username:  {{ this.$store.state.userInfo.username }}</p>
+      <p>nickname:  {{ this.$store.state.userInfo.nickname }}</p>
+      <p>date_joined:  {{ this.$store.state.userInfo.date_joined }}</p>
+      <p>birth_year:  {{ this.$store.state.userInfo.birth_year }}</p>
+      <p>favorite_movie:  {{ this.$store.state.userInfo.favorite_movie }}</p>
+    </div>
     
 
   </div>

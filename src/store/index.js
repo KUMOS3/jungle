@@ -20,6 +20,12 @@ export default new Vuex.Store({
     selectedMovie: null,
     // 프로필에 사용될 사용자 정보
     userInfo: null,
+    // 리뷰 전체 목록
+    reviews: null,
+    // // ReviewListItem
+    // reviewItem: null,
+    // // 팝업창을 띄울 review
+    // selectedReview:null
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -33,11 +39,14 @@ export default new Vuex.Store({
     },
     GET_USER_INFO: function (state, data) {
       state.userInfo = data
-    }
+    },
+    GET_REVIEWS: function (state, data) {
+      state.reviews = data
+    },
   },
   actions: {
     getJWT: function(context, credential) {
-      console.log(context, credential)
+      // console.log(context, credential)
       axios({
         method: 'post',
         url: `${SERVER_URL}/accounts/api-token-auth/`,
@@ -45,7 +54,7 @@ export default new Vuex.Store({
       })
       .then((res) => {
         context.commit('SAVE_JWT', res.data.token)
-        console.log(res.data)
+        // console.log(res.data)
       })
       .catch((err) => {
         console.log(err)
@@ -55,7 +64,7 @@ export default new Vuex.Store({
       context.commit('DELETE_JWT')
     },
     getMovies: function (context) {
-      console.log(context)
+      // console.log(context)
       axios({
         method: 'get',
         url: `${SERVER_URL}/api/v1/movies/`,
@@ -64,7 +73,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           context.commit('GET_MOVIES', res.data)
         })
         .catch((err) => {
@@ -72,7 +81,7 @@ export default new Vuex.Store({
         })
     },
     getUserInfo: function (context, userid) {
-      console.log(context, userid)
+      // console.log(context, userid)
       axios({
         method: 'get',
         url: `${SERVER_URL}/accounts/${userid}/profile`,
@@ -82,13 +91,30 @@ export default new Vuex.Store({
         }
       })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         context.commit('GET_USER_INFO', res.data)
       })
       .catch((err) => {
         console.log(err)
       })
-    }
+    },
+    getReviews: function (context) {
+      // console.log(context)
+      axios({
+        method: 'get',
+        url: `${SERVER_URL}/community/reviews/`,
+        headers: {
+          Authorization: `JWT ${context.state.userToken}`
+        }
+      })
+        .then((res) => {
+          // console.log(res)
+          context.commit('GET_REVIEWS', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
   getters: {
     decodedToken: function (state, ) {
@@ -102,20 +128,9 @@ export default new Vuex.Store({
     movies: function (state) {
       return state.movies
     },
-    // movieTitle: function (state) {
-    //   console.log(state.movieItem.title)
-    //   console.log(state.movieItem)
-    // },
-    // movieContent: function (state) {
-    //   console.log(state.movieItem)
-    // },
-    // movieOverview: function (state) {
-    //   console.log(state.selectedMovie.overview)
-    // },
-    // moviePosterPath: function (state) {
-    //   console.log(state.selectedMovie.poster_path)
-    // },
-    
+    reviews: function (state) {
+      return state.reviews
+    },    
   },
   modules: {
   }

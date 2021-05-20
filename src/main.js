@@ -2,7 +2,19 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
+// (FROM) fontawesome 사용하기
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// (아이콘1.) 가져오기
+// import { faPagelines } from '@fortawesome/free-brands-svg-icons'
+import { faFireAlt } from '@fortawesome/free-solid-svg-icons'
 
+// (아이콘2) 라이브러리 추가
+// library.add(faUserSecret)
+library.add(faFireAlt)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+// (TO) fontawesome 사용하기
 Vue.config.productionTip = false
 
 new Vue({

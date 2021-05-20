@@ -3,10 +3,11 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
+      <router-link to="/campfire">Campfire</router-link> |
       <div v-if="this.$store.getters.decodedToken">
         <router-link to="/profile">Profile</router-link> |
         <router-link @click.native="deleteJWT" to="#">Logout</router-link> |
-        <p>Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</p>
+        <p v-if="this.$store.state.userInfo">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</p>
       </div>
       <div v-else>
         <router-link :to="{ name: 'Login'}">Login</router-link>
