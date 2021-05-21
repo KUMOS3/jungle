@@ -45,10 +45,7 @@ export default new Vuex.Store({
       state.reviews = data
     },
     CREATE_REVIEW: function (state, input) {
-      const review = {
-        title: input,
-      }
-      state.reviews.push(review)
+      state.reviews.push(input)
     },
   },
   actions: {
