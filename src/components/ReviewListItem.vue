@@ -6,6 +6,7 @@
     
     <button><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
     <button><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
+
   </div>
 </template>
 
@@ -32,7 +33,7 @@ export default {
     },
     closeDetail: function () {
       this.modalStatus = false
-    }
+    },
   },
   computed:{
     reviewTitle: function () {
