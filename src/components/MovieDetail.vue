@@ -15,6 +15,32 @@
             <p>vote_count= {{ movie.vote_count }}</p>
             <p>vote_average= {{ movie.vote_average }}</p>
             <p>popularity= {{ movie.popularity }}</p>
+            <p>movie_like_users= {{ movie.movie_like_users }}</p>
+
+            <!-- like -->
+            {{ likeStatus}}
+            <div @click="callLike">
+              <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
+              <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
+              <p>Movies that you liked : {{ this.$store.state.userInfo.like_movies }}</p>
+            </div>
+
+            <!-- dislike -->
+            <div @click="callDislike">
+              {{ dislikeStatus}}
+              <button v-if="dislikeStatus"><font-awesome-icon :icon="['fas', 'tint']" style="color:#4c6ef5" /></button>
+              <button v-else><font-awesome-icon :icon="['fas', 'tint']" style="color:#adb5bd" /></button>
+              <p>{{ this.$store.state.userInfo }}</p>
+              <p>Movies that you disliked : {{ this.$store.state.userInfo.dislike_movies }}</p>
+            </div>
+
+            <!-- wish -->
+            <p>{{ wishStatus}}</p>
+            <div @click="callWish">
+              <button v-if="wishStatus"><font-awesome-icon :icon="['fas', 'gem']" style="color:#be4bdb" /></button>
+              <button v-else><font-awesome-icon :icon="['fas', 'gem']" style="color:#dbdad9" /></button>
+              <p>Movies that you wished : {{ this.$store.state.userInfo.wish_movies }}</p>
+            </div>
 
           </div>
           <div class="modal-footer">
@@ -33,12 +59,24 @@ import {mapGetters} from 'vuex'
 export default {
   name: 'MovieDetail',
   props: {
-    movie: Object
+    movie: Object,
+    likeStatus: Boolean,
+    dislikeStatus: Boolean,
+    wishStatus: Boolean
   },
   methods: {
     closeDetail: function () {
       this.$emit('close-detail')
-    }
+    },
+    callLike: function () {
+      this.$emit('call-like')
+    },
+    callDislike: function () {
+      this.$emit('call-dislike')
+    },
+    callWish: function () {
+      this.$emit('call-wish')
+    },
   },
   computed:{
   ...mapGetters([

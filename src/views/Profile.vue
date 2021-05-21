@@ -8,6 +8,10 @@
       <p>date_joined:  {{ this.$store.state.userInfo.date_joined }}</p>
       <p>birth_year:  {{ this.$store.state.userInfo.birth_year }}</p>
       <p>favorite_movie:  {{ this.$store.state.userInfo.favorite_movie }}</p>
+      <p>like_movies:  {{ this.$store.state.userInfo.like_movies }}</p>
+      <p>dislike_movies:  {{ this.$store.state.userInfo.dislike_movies }}</p>
+      <p>wish_movies:  {{ this.$store.state.userInfo.wish_movies }}</p>
+      
     </div>
     
 
