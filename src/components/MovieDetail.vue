@@ -17,8 +17,9 @@
             <p>popularity= {{ movie.popularity }}</p>
             <p>movie_like_users= {{ movie.movie_like_users }}</p>
 
+            <hr>
+            <p>{{ this.$store.state.userInfo }}</p>
             <!-- like -->
-            {{ likeStatus}}
             <div @click="callLike">
               <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
               <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
@@ -27,15 +28,12 @@
 
             <!-- dislike -->
             <div @click="callDislike">
-              {{ dislikeStatus}}
               <button v-if="dislikeStatus"><font-awesome-icon :icon="['fas', 'tint']" style="color:#4c6ef5" /></button>
               <button v-else><font-awesome-icon :icon="['fas', 'tint']" style="color:#adb5bd" /></button>
-              <p>{{ this.$store.state.userInfo }}</p>
               <p>Movies that you disliked : {{ this.$store.state.userInfo.dislike_movies }}</p>
             </div>
 
             <!-- wish -->
-            <p>{{ wishStatus}}</p>
             <div @click="callWish">
               <button v-if="wishStatus"><font-awesome-icon :icon="['fas', 'gem']" style="color:#be4bdb" /></button>
               <button v-else><font-awesome-icon :icon="['fas', 'gem']" style="color:#dbdad9" /></button>

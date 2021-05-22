@@ -14,6 +14,15 @@
             <p>movie_rate= {{ review.movie_rate }}</p>
             <p>user= {{ review.user }}</p>
             <p>created_at= {{ review.created_at }}</p>
+
+            <!-- like -->
+            <div @click="callLike">
+              <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
+              <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
+              <p>Reviews that you liked : {{ this.$store.state.userInfo.like_Reviews }}</p>
+            </div>
+
+
             <p>Comments</p>
             <div v-for="(comment, id) in review.comments" :key=id>
               <p>user= {{ comment.user }}</p>
@@ -38,12 +47,16 @@ import {mapGetters} from 'vuex'
 export default {
   name: 'ReviewDetail',
   props: {
-    review: Object
+    review: Object,
+    likeStatus: Boolean,
   },
   methods: {
     closeDetail: function () {
       this.$emit('close-detail')
-    }
+    },
+    callLike: function () {
+      this.$emit('call-like')
+    },
   },
   computed:{
   ...mapGetters([
