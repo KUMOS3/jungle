@@ -25,6 +25,7 @@
 
             <!-- 댓글 -->
             <p>Comments</p>
+            {{ comments }}
             <input type="text" v-model="commentInfo.content" @keyup.enter="createComment">
             <button @keyup.enter="createComment" @click="createComment">Add</button>
             <div v-for="(comment, id) in review.comments" :key=id>
@@ -35,7 +36,7 @@
 
           </div>
           <div class="modal-footer">
-            <button @click="deleteReview">X</button>
+            <button @click="deleteReview" type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
             <button @click="closeDetail" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
           </div>
@@ -83,8 +84,8 @@ export default {
         }
       })
         .then((res) => {
-          // this.$store.dispatch('getReviews')
           this.comments.push(res.data)
+          this.$store.dispatch('getReviews')
         }) 
         .catch((err) => {
           console.log(err)
