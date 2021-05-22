@@ -26,6 +26,7 @@ export default new Vuex.Store({
     // reviewItem: null,
     // // 팝업창을 띄울 review
     // selectedReview:null
+    inputReview: null,
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -42,6 +43,9 @@ export default new Vuex.Store({
     },
     GET_REVIEWS: function (state, data) {
       state.reviews = data
+    },
+    CREATE_REVIEW: function (state, input) {
+      state.reviews.push(input)
     },
   },
   actions: {
@@ -115,6 +119,24 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    createReview: function (context, reviewInfo) {
+      console.log(reviewInfo)
+      axios({
+        method: 'post',
+        url: `${SERVER_URL}/community/reviews/`,
+        data: reviewInfo,
+        headers: {
+          Authorization: `JWT ${context.state.userToken}`
+        }
+      })
+        .then((res) => {
+          console.log(res)
+          context.commit('CREATE_REVIEW', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
   getters: {
     decodedToken: function (state, ) {
@@ -130,7 +152,13 @@ export default new Vuex.Store({
     },
     reviews: function (state) {
       return state.reviews
-    },    
+    },
+    comments: function (state) {
+      return state.comments
+    },
+    // commentsCount: function (state) {
+    //   return state.comments.length
+    // }
   },
   modules: {
   }

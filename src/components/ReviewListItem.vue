@@ -15,6 +15,7 @@
       <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
       <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
     </div>
+
   </div>
 </template>
 
@@ -47,6 +48,7 @@ export default {
     closeDetail: function () {
       this.modalStatus = false
     },
+    
     getLike: function () {
       axios({
         method: 'get',
