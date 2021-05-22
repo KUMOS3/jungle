@@ -14,7 +14,6 @@
     />
 
     <!-- 좋아요 기능 -->
-    {{ likeStatus}}
     <div @click="likeMovie">
       <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
       <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
@@ -22,13 +21,11 @@
     </div>
 
     <!-- 별로에요 기능 -->
-    {{ dislikeStatus}}
     <div @click="dislikeMovie">
       <button v-if="dislikeStatus"><font-awesome-icon :icon="['fas', 'tint']" style="color:#4c6ef5" /></button>
       <button v-else><font-awesome-icon :icon="['fas', 'tint']" style="color:#adb5bd" /></button>
     </div>
     <!-- 찜 기능 -->
-    {{ wishStatus}}
     <div @click="wishMovie">
       <button v-if="wishStatus"><font-awesome-icon :icon="['fas', 'gem']" style="color:#be4bdb" /></button>
       <button v-else><font-awesome-icon :icon="['fas', 'gem']" style="color:#adb5bd" /></button>
@@ -41,7 +38,6 @@
 import MovieDetail from '@/components/MovieDetail'
 import { mapGetters } from 'vuex'
 import axios from 'axios'
-// import VUE_APP_SERVER_URL from '@/'
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 

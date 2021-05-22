@@ -14,6 +14,15 @@
             <p>movie_rate= {{ review.movie_rate }}</p>
             <p>user= {{ review.user }}</p>
             <p>created_at= {{ review.created_at }}</p>
+
+            <!-- like -->
+            <div @click="callLike">
+              <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
+              <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
+              <p>Reviews that you liked : {{ this.$store.state.userInfo.like_Reviews }}</p>
+            </div>
+
+
             <!-- 댓글 -->
             <p>Comments</p>
             <input type="text" v-model="commentInfo.content" @keyup.enter="createComment">
@@ -54,11 +63,15 @@ export default {
     }
   },
   props: {
-    review: Object
+    review: Object,
+    likeStatus: Boolean,
   },
   methods: {
     closeDetail: function () {
       this.$emit('close-detail')
+    },
+    callLike: function () {
+      this.$emit('call-like')
     },
     createComment: function () {
       axios({
