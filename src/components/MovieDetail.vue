@@ -9,6 +9,8 @@
             <button @click="closeDetail" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            <p>movie_id= {{ movie.id }}</p>
+            <iframe v-if="previewURL" :src="previewURL" frameborder="0"></iframe>
             <p>overview= {{ movie.overview }}</p>
             <p>release_date= {{ movie.release_date }}</p>
             <p>poster_path= {{ movie.poster_path }}</p>
@@ -16,6 +18,9 @@
             <p>vote_average= {{ movie.vote_average }}</p>
             <p>popularity= {{ movie.popularity }}</p>
             <p>movie_like_users= {{ movie.movie_like_users }}</p>
+            <hr>
+            <!-- 예고편 -->
+
 
             <hr>
             <p>{{ this.$store.state.userInfo }}</p>
@@ -53,6 +58,8 @@
 
 <script>
 import {mapGetters} from 'vuex'
+// const YOUTUBE_API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY
+// const TMDB_API_KEY = process.env.VUE_APP_TMDB_API_KEY
 
 export default {
   name: 'MovieDetail',
@@ -60,7 +67,8 @@ export default {
     movie: Object,
     likeStatus: Boolean,
     dislikeStatus: Boolean,
-    wishStatus: Boolean
+    wishStatus: Boolean,
+    previewURL: String,
   },
   methods: {
     closeDetail: function () {
@@ -81,8 +89,8 @@ export default {
     // 'movieTitle',
     // 'movieContent'
     // 'movieOverview'
-  ])
-}
+    ])
+  },
 }
 </script>
 
