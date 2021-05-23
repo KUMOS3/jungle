@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'Profile',
   data: function () {
@@ -30,9 +32,14 @@ export default {
     getUserInfo: function () {
       this.userid = this.$store.getters.decodedToken.user_id
       this.$store.dispatch('getUserInfo', this.userid)
-    }
+    },
+    ...mapMutations([
+      'CHANGE_COLOR'
+    ])
   },
   created: function () {
+    this.CHANGE_COLOR('day')
+    document.body.style.backgroundImage = "linear-gradient( #0C2F4D 80%,  #092742 100% )"
     this.getUserInfo()
   }
 }
