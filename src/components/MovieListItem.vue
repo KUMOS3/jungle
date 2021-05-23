@@ -79,121 +79,130 @@ export default {
       this.modalStatus = false
     },
     getLike: function () {
-      axios({
-        method: 'get',
-        url: `${SERVER_URL}/api/v1/${this.movie.id}/like/`,
-        headers: {
-          Authorization: `JWT ${this.$store.state.userToken}`
-        },
-      })
-        .then((res) => {
-          this.likeStatus = res.data.liked
-          this.userid = this.$store.getters.decodedToken.user_id
-          this.$store.dispatch('getUserInfo', this.userid)
-          // this.likeStatus = res.data.
+      if (this.userid) {
+        axios({
+          method: 'get',
+          url: `${SERVER_URL}/api/v1/${this.movie.id}/like/`,
+          headers: {
+            Authorization: `JWT ${this.$store.state.userToken}`
+          },
         })
-        .catch((err) => {
-          console.log(err)
-        })
+          .then((res) => {
+            this.likeStatus = res.data.liked
+              this.userid = this.$store.getters.decodedToken.user_id
+              this.$store.dispatch('getUserInfo', this.userid)
+            // this.likeStatus = res.data.
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     getDislike: function () {
-      axios({
-        method: 'get',
-        url: `${SERVER_URL}/api/v1/${this.movie.id}/dislike/`,
-        headers: {
-          Authorization: `JWT ${this.$store.state.userToken}`
-        },
-      })
-        .then((res) => {
-          this.dislikeStatus = res.data.disliked
-          this.userid = this.$store.getters.decodedToken.user_id
-          this.$store.dispatch('getUserInfo', this.userid)
+      if (this.userid) {
+        axios({
+          method: 'get',
+          url: `${SERVER_URL}/api/v1/${this.movie.id}/dislike/`,
+          headers: {
+            Authorization: `JWT ${this.$store.state.userToken}`
+          },
         })
-        .catch((err) => {
-          console.log(err)
-        })
+          .then((res) => {
+            this.dislikeStatus = res.data.disliked
+              this.userid = this.$store.getters.decodedToken.user_id
+              this.$store.dispatch('getUserInfo', this.userid)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     getWish: function () {
-      axios({
-        method: 'get',
-        url: `${SERVER_URL}/api/v1/${this.movie.id}/wish/`,
-        headers: {
-          Authorization: `JWT ${this.$store.state.userToken}`
-        },
-      })
-        .then((res) => {
-          this.wishStatus = res.data.wished
-          this.userid = this.$store.getters.decodedToken.user_id
-          this.$store.dispatch('getUserInfo', this.userid)
+      if (this.userid) {
+        axios({
+          method: 'get',
+          url: `${SERVER_URL}/api/v1/${this.movie.id}/wish/`,
+          headers: {
+            Authorization: `JWT ${this.$store.state.userToken}`
+          },
+        })
+          .then((res) => {
+            this.wishStatus = res.data.wished
+              this.userid = this.$store.getters.decodedToken.user_id
+              this.$store.dispatch('getUserInfo', this.userid)
 
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     likeMovie: function () {
-      axios({
-        method: 'post',
-        url: `${SERVER_URL}/api/v1/${this.movie.id}/like/`,
-        headers: {
-          Authorization: `JWT ${this.$store.state.userToken}`
-        },
-      })
-        .then((res) => {
-          this.likedMovie = res.data
-          if (this.likeStatus==false && this.dislikeStatus==true) {
-            this.dislikeStatus=!this.dislikeStatus
-          }
-          this.likeStatus = !this.likeStatus
-
-          this.userid = this.$store.getters.decodedToken.user_id
-          this.$store.dispatch('getUserInfo', this.userid)
-
+      if (this.userid) {
+        axios({
+          method: 'post',
+          url: `${SERVER_URL}/api/v1/${this.movie.id}/like/`,
+          headers: {
+            Authorization: `JWT ${this.$store.state.userToken}`
+          },
         })
-        .catch((err) => {
-          console.log(err)
-        })
+          .then((res) => {
+            this.likedMovie = res.data
+            if (this.likeStatus==false && this.dislikeStatus==true) {
+              this.dislikeStatus=!this.dislikeStatus
+            }
+            this.likeStatus = !this.likeStatus
+              this.userid = this.$store.getters.decodedToken.user_id
+              this.$store.dispatch('getUserInfo', this.userid)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     dislikeMovie: function () {
-      axios({
-        method: 'post',
-        url: `${SERVER_URL}/api/v1/${this.movie.id}/dislike/`,
-        headers: {
-          Authorization: `JWT ${this.$store.state.userToken}`
-        },
-      })
-        .then((res) => {
-          this.dislikedMovie = res.data
-          if (this.dislikeStatus==false && this.likeStatus==true) {
-            this.likeStatus=!this.likeStatus
-          }
-          
-          this.dislikeStatus = !this.dislikeStatus
-
-          this.userid = this.$store.getters.decodedToken.user_id
-          this.$store.dispatch('getUserInfo', this.userid)
+      if (this.userid) {
+        axios({
+          method: 'post',
+          url: `${SERVER_URL}/api/v1/${this.movie.id}/dislike/`,
+          headers: {
+            Authorization: `JWT ${this.$store.state.userToken}`
+          },
         })
-        .catch((err) => {
-          console.log(err)
-        })
+          .then((res) => {
+            this.dislikedMovie = res.data
+            if (this.dislikeStatus==false && this.likeStatus==true) {
+              this.likeStatus=!this.likeStatus
+            }
+            
+            this.dislikeStatus = !this.dislikeStatus
+              this.userid = this.$store.getters.decodedToken.user_id
+              this.$store.dispatch('getUserInfo', this.userid)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     wishMovie: function () {
-      axios({
-        method: 'post',
-        url: `${SERVER_URL}/api/v1/${this.movie.id}/wish/`,
-        headers: {
-          Authorization: `JWT ${this.$store.state.userToken}`
-        },
-      })
-        .then((res) => {
-          this.wishedMovie = res.data
-          this.wishStatus = !this.wishStatus
-          this.userid = this.$store.getters.decodedToken.user_id
-          this.$store.dispatch('getUserInfo', this.userid)
+      if (this.userid) {
+        axios({
+          method: 'post',
+          url: `${SERVER_URL}/api/v1/${this.movie.id}/wish/`,
+          headers: {
+            Authorization: `JWT ${this.$store.state.userToken}`
+          },
         })
-        .catch((err) => {
-          console.log(err)
-        })
+          .then((res) => {
+            this.wishedMovie = res.data
+            this.wishStatus = !this.wishStatus
+              this.userid = this.$store.getters.decodedToken.user_id
+              this.$store.dispatch('getUserInfo', this.userid)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     }
   },
   computed:{

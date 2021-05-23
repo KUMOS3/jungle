@@ -50,22 +50,24 @@ export default {
     },
     
     getLike: function () {
-      axios({
-        method: 'get',
-        url: `${SERVER_URL}/community/${this.review.id}/like/`,
-        headers: {
-          Authorization: `JWT ${this.$store.state.userToken}`
-        },
-      })
-        .then((res) => {
-          this.likeStatus = res.data.liked
-          this.userid = this.$store.getters.decodedToken.user_id
-          this.$store.dispatch('getUserInfo', this.userid)
-          // this.likeStatus = res.data.
+      if (this.userid) {
+        axios({
+          method: 'get',
+          url: `${SERVER_URL}/community/${this.review.id}/like/`,
+          headers: {
+            Authorization: `JWT ${this.$store.state.userToken}`
+          },
         })
-        .catch((err) => {
-          console.log(err)
-        })
+          .then((res) => {
+            this.likeStatus = res.data.liked
+            this.userid = this.$store.getters.decodedToken.user_id
+            this.$store.dispatch('getUserInfo', this.userid)
+            // this.likeStatus = res.data.
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     likeReview: function () {
       axios({
@@ -86,6 +88,7 @@ export default {
         .catch((err) => {
           console.log(err)
         })
+
     },
   },
   computed:{

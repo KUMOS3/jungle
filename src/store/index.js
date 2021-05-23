@@ -69,38 +69,42 @@ export default new Vuex.Store({
     },
     getMovies: function (context) {
       // console.log(context)
-      axios({
-        method: 'get',
-        url: `${SERVER_URL}/api/v1/movies/`,
-        headers: {
-          Authorization: `JWT ${context.state.userToken}`
-        }
-      })
-        .then((res) => {
-          // console.log(res)
-          context.commit('GET_MOVIES', res.data)
+      if (this.userid) {
+        axios({
+          method: 'get',
+          url: `${SERVER_URL}/api/v1/movies/`,
+          headers: {
+            Authorization: `JWT ${context.state.userToken}`
+          }
         })
-        .catch((err) => {
-          console.log(err)
-        })
+          .then((res) => {
+            // console.log(res)
+            context.commit('GET_MOVIES', res.data)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     getUserInfo: function (context, userid) {
       // console.log(context, userid)
-      axios({
-        method: 'get',
-        url: `${SERVER_URL}/accounts/${userid}/profile`,
-        data: userid,
-        headers: {
-          Authorization: `JWT ${context.state.userToken}`
-        }
-      })
-      .then((res) => {
-        // console.log(res)
-        context.commit('GET_USER_INFO', res.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+      if (this.userid) {
+        axios({
+          method: 'get',
+          url: `${SERVER_URL}/accounts/${userid}/profile`,
+          data: userid,
+          headers: {
+            Authorization: `JWT ${context.state.userToken}`
+          }
+        })
+          .then((res) => {
+            // console.log(res)
+            context.commit('GET_USER_INFO', res.data)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     getReviews: function (context) {
       // console.log(context)
