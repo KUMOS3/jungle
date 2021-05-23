@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '@/views/Login'
 import Profile from '@/views/Profile'
 import Campfire from '@/views/Campfire'
+import Signup from '@/views/Signup'
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup
   },
 ]
 
