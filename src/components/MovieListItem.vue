@@ -7,7 +7,9 @@
       @call-like="likeMovie" 
       @call-dislike="dislikeMovie" 
       @call-wish="wishMovie"
-      v-show="modalStatus" :movie="movie" 
+      v-show="modalStatus" 
+      :movie="movie" 
+      :previewURL="previewURL"
       :likeStatus="likeStatus"
       :dislikeStatus="dislikeStatus"
       :wishStatus="wishStatus"
@@ -55,6 +57,7 @@ export default {
       dislikedMovie: null,
       wishStatus: null,
       wishedMovie: null,
+      previewURL: null,
     }
   },
   props: {
@@ -63,6 +66,14 @@ export default {
   methods: {
     showDetail: function () {
       this.modalStatus = true
+      const url = this.videoKey
+      fetch(url)
+        .then(res => res.json())
+        .then((res) => {
+          const previewKey = res.results[0].key
+          this.previewURL = `https://www.youtube.com/embed/${previewKey}`
+          console.log(this.previewURL)
+        })
     },
     closeDetail: function () {
       this.modalStatus = false
@@ -188,6 +199,12 @@ export default {
   computed:{
     moviePosterURL: function () {
       return `https://image.tmdb.org/t/p/w500/${this.movie.poster_path}`
+    },
+    videoId: function () {
+      return this.movie.id
+    },
+    videoKey: function () {
+      return `https://api.themoviedb.org/3/movie/${this.videoId}/videos?api_key=3f1c187d77531562ac88a15e481a6b98&language=en-US`
     },
     ...mapGetters([
       // 'moviePosterPath',
