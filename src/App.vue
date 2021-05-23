@@ -10,6 +10,7 @@
         <p v-if="this.$store.state.userInfo">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</p>
       </div>
       <div v-else>
+        <router-link :to="{ name: 'Signup'}">Signup</router-link> |      
         <router-link :to="{ name: 'Login'}">Login</router-link>
       </div>
     </div>
