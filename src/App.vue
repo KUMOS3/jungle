@@ -28,9 +28,14 @@
               <li v-if="this.$store.getters.decodedToken" class="nav-item">
                 <router-link class="nav-link" @click.native="deleteJWT" to="#">Logout</router-link>
               </li>
-              <li v-else class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
-              </li>
+              <div v-else>
+                <li class="nav-item">
+                  <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
+                </li>
+                <li class="nav-item">
+                  <router-link class="nav-link" :to="{ name: 'Signup'}">Signup</router-link>
+                </li>
+              </div>
           
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>

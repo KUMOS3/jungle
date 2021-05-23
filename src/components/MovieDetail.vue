@@ -28,21 +28,21 @@
             <div @click="callLike">
               <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
               <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
-              <p>Movies that you liked : {{ this.$store.state.userInfo.like_movies }}</p>
+              <p v-if="this.$store.state.userInfo">Movies that you liked : {{ this.$store.state.userInfo.like_movies }}</p>
             </div>
 
             <!-- dislike -->
             <div @click="callDislike">
               <button v-if="dislikeStatus"><font-awesome-icon :icon="['fas', 'tint']" style="color:#4c6ef5" /></button>
               <button v-else><font-awesome-icon :icon="['fas', 'tint']" style="color:#adb5bd" /></button>
-              <p>Movies that you disliked : {{ this.$store.state.userInfo.dislike_movies }}</p>
+              <p v-if="this.$store.state.userInfo">Movies that you disliked : {{ this.$store.state.userInfo.dislike_movies }}</p>
             </div>
 
             <!-- wish -->
             <div @click="callWish">
               <button v-if="wishStatus"><font-awesome-icon :icon="['fas', 'gem']" style="color:#be4bdb" /></button>
               <button v-else><font-awesome-icon :icon="['fas', 'gem']" style="color:#dbdad9" /></button>
-              <p>Movies that you wished : {{ this.$store.state.userInfo.wish_movies }}</p>
+              <p v-if="this.$store.state.userInfo">Movies that you wished : {{ this.$store.state.userInfo.wish_movies }}</p>
             </div>
 
           </div>

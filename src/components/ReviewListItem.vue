@@ -50,7 +50,7 @@ export default {
     },
     
     getLike: function () {
-      if (this.userid) {
+      if (this.$store.state.userToken) {
         axios({
           method: 'get',
           url: `${SERVER_URL}/community/${this.review.id}/like/`,
