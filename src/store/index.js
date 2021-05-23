@@ -27,6 +27,7 @@ export default new Vuex.Store({
     // // 팝업창을 띄울 review
     // selectedReview:null
     inputReview: null,
+    color: 'dark'
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -34,6 +35,7 @@ export default new Vuex.Store({
     },
     DELETE_JWT: function (state) {
       state.userToken = null
+      state.userInfo = null
     },
     GET_MOVIES: function (state, data) {
       state.movies = data
@@ -47,6 +49,9 @@ export default new Vuex.Store({
     CREATE_REVIEW: function (state, input) {
       state.reviews.push(input)
     },
+    CHANGE_COLOR: function (state, color) {
+      state.color = color
+    }
   },
   actions: {
     getJWT: function(context, credential) {
@@ -161,6 +166,14 @@ export default new Vuex.Store({
     comments: function (state) {
       return state.comments
     },
+    color: function (state) {
+      if (state.color == 'night') {
+        return 'navbar-dark bg-dark'
+      }
+      else {
+        return 'navbar-dark bg-primary'
+      }
+    }
     // commentsCount: function (state) {
     //   return state.comments.length
     // }
