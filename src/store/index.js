@@ -74,7 +74,7 @@ export default new Vuex.Store({
     },
     getMovies: function (context) {
       // console.log(context)
-      if (this.userid) {
+      if (this.state.userToken) {
         axios({
           method: 'get',
           url: `${SERVER_URL}/api/v1/movies/`,
@@ -93,7 +93,7 @@ export default new Vuex.Store({
     },
     getUserInfo: function (context, userid) {
       // console.log(context, userid)
-      if (this.userid) {
+      if (this.state.userToken) {
         axios({
           method: 'get',
           url: `${SERVER_URL}/accounts/${userid}/profile`,

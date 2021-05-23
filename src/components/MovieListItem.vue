@@ -79,7 +79,7 @@ export default {
       this.modalStatus = false
     },
     getLike: function () {
-      if (this.userid) {
+      if (this.$store.state.userToken) {
         axios({
           method: 'get',
           url: `${SERVER_URL}/api/v1/${this.movie.id}/like/`,
@@ -99,7 +99,7 @@ export default {
       }
     },
     getDislike: function () {
-      if (this.userid) {
+      if (this.$store.state.userToken) {
         axios({
           method: 'get',
           url: `${SERVER_URL}/api/v1/${this.movie.id}/dislike/`,
@@ -118,7 +118,7 @@ export default {
       }
     },
     getWish: function () {
-      if (this.userid) {
+      if (this.$store.state.userToken) {
         axios({
           method: 'get',
           url: `${SERVER_URL}/api/v1/${this.movie.id}/wish/`,
@@ -138,7 +138,7 @@ export default {
       }
     },
     likeMovie: function () {
-      if (this.userid) {
+      if (this.$store.state.userToken) {
         axios({
           method: 'post',
           url: `${SERVER_URL}/api/v1/${this.movie.id}/like/`,
@@ -161,7 +161,7 @@ export default {
       }
     },
     dislikeMovie: function () {
-      if (this.userid) {
+      if (this.$store.state.userToken) {
         axios({
           method: 'post',
           url: `${SERVER_URL}/api/v1/${this.movie.id}/dislike/`,
@@ -185,7 +185,7 @@ export default {
       }
     },
     wishMovie: function () {
-      if (this.userid) {
+      if (this.$store.state.userToken) {
         axios({
           method: 'post',
           url: `${SERVER_URL}/api/v1/${this.movie.id}/wish/`,

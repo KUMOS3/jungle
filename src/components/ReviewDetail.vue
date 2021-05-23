@@ -19,7 +19,7 @@
             <div @click="callLike">
               <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
               <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
-              <p>Reviews that you liked : {{ this.$store.state.userInfo.like_Reviews }}</p>
+              <p v-if="this.$store.state.userInfo">Reviews that you liked : {{ this.$store.state.userInfo.like_Reviews }}</p>
             </div>
 
 

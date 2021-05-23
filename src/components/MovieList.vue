@@ -22,7 +22,6 @@ export default {
   },
   created: function () {
     this.$store.dispatch('getMovies')
-    console.log(this.movies)
   },
   computed: {
     ...mapGetters([
