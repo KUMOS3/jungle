@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 영화 포스터 -->
-    <button @click="showDetail">{{ moviePosterPath }}</button>
+    <a @click="showDetail"><img :src="moviePosterURL" alt=""></a>
     <MovieDetail
       @close-detail="closeDetail" 
       @call-like="likeMovie" 
@@ -186,8 +186,8 @@ export default {
     }
   },
   computed:{
-    moviePosterPath: function () {
-      return this.movie.poster_path
+    moviePosterURL: function () {
+      return `https://image.tmdb.org/t/p/w500/${this.movie.poster_path}`
     },
     ...mapGetters([
       // 'moviePosterPath',

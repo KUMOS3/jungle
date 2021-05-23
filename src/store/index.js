@@ -121,7 +121,7 @@ export default new Vuex.Store({
     },
     createReview: function (context, reviewInfo) {
       console.log(reviewInfo)
-      console.log(`${SERVER_URL}/community/reviews/`)
+      // console.log(`${SERVER_URL}/community/reviews/`)
       axios({
         method: 'post',
         url: `${SERVER_URL}/community/reviews/`,
