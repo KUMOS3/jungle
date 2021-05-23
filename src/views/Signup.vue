@@ -15,6 +15,7 @@
 
 <script>
 import axios from 'axios'
+import { mapMutations } from 'vuex'
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
@@ -30,7 +31,7 @@ export default {
         favorite_movie: '',
         // 입력형식 편하게 바꿔주기
         birth_year: '',      
-     }
+    }
     }
   },
   methods: {
@@ -48,8 +49,16 @@ export default {
         .catch ((err) => {
           console.log(err)
         })
-    }
-  }  
+      },
+    ...mapMutations([
+      'CHANGE_COLOR'
+    ])
+  },
+  created: function () {
+    this.CHANGE_COLOR('day')
+    document.body.style.backgroundImage = "linear-gradient( #0C2F4D 80%,  #092742 100% )"
+    this.getUserInfo()
+  }
 }
 </script>
 

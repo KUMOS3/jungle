@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg" :class="color">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">JUNGLE.</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
@@ -20,7 +19,7 @@
               <router-link class="nav-link" to="/campfire">Campfire</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <router-link class="nav-link" to="/about">About</router-link>
             </li>
             
               <li v-if="this.$store.getters.decodedToken" class="nav-item">
@@ -52,7 +51,6 @@
       </div>
     </nav>
 
-    <p v-if="this.$store.state.userInfo">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</p>
     <router-view/>
 
 
@@ -60,6 +58,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'App',
   methods: {
@@ -71,6 +71,11 @@ export default {
   created: function () {
     if (!this.$store.getters.decodedToken)
       this.$router.push({name: 'Login'})
+  },
+  computed: {
+    ...mapGetters([
+      'color'
+    ])
   }
 }
 </script>
@@ -81,7 +86,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #FFF;
 }
 
 #nav {
