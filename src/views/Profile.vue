@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>MyProfile</h1>
-    <div v-if="this.$store.state.userInfo">
+    <div v-if="this.$store.state.userToken">
       <p>{{ this.$store.state.userInfo }}</p>
       <p>username:  {{ this.$store.state.userInfo.username }}</p>
       <p>nickname:  {{ this.$store.state.userInfo.nickname }}</p>

@@ -22,20 +22,18 @@
               <router-link class="nav-link" to="/about">About</router-link>
             </li>
             
-              <li v-if="this.$store.getters.decodedToken" class="nav-item">
+              <li v-if="this.$store.state.userToken" class="nav-item">
                 <router-link class="nav-link" to="/profile">Profile</router-link>
               </li>
-              <li v-if="this.$store.getters.decodedToken" class="nav-item">
+              <li v-if="this.$store.state.userToken" class="nav-item">
                 <router-link class="nav-link" @click.native="deleteJWT" to="#">Logout</router-link>
               </li>
-              <div v-else>
-                <li class="nav-item">
-                  <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link class="nav-link" :to="{ name: 'Signup'}">Signup</router-link>
-                </li>
-              </div>
+              <li v-if="!this.$store.state.userToken" class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
+              </li>
+              <li v-if="!this.$store.state.userToken" class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'Signup'}">Signup</router-link>
+              </li>
           
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -70,7 +68,7 @@ export default {
   methods: {
     deleteJWT: function () {
       this.$store.dispatch('deleteJWT')
-      this.$router.push({name: 'Login'})
+      this.$router.push({name: 'Home'})
     }
   },
   created: function () {
