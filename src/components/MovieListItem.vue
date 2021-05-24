@@ -1,36 +1,54 @@
 <template>
-  <div>
+  <div class="mb-3 col-xs-12 col-sm-6 col-lg-4 px-4 my-5">
     <!-- 영화 포스터 -->
-    <a @click="showDetail"><img :src="moviePosterURL" alt=""></a>
-    <MovieDetail
-      @close-detail="closeDetail" 
-      @call-like="likeMovie" 
-      @call-dislike="dislikeMovie" 
-      @call-wish="wishMovie"
-      v-show="modalStatus" 
-      :movie="movie" 
-      :previewURL="previewURL"
-      :likeStatus="likeStatus"
-      :dislikeStatus="dislikeStatus"
-      :wishStatus="wishStatus"
-    />
+    <div class="card border-light">
+    <!-- <div class="card border-light mb-3 d-flex justify-content-center col-xs-12 col-sm-6 col-lg-4"> -->
+      <a @click="showDetail"><img :src="moviePosterURL" class="card-img-top" style="height: 350px" alt=""></a>
+      <div class="card-body">
+        <div v-if="this.$store.state.userToken">
+          <MovieDetail
+            @close-detail="closeDetail" 
+            @call-like="likeMovie" 
+            @call-dislike="dislikeMovie" 
+            @call-wish="wishMovie"
+            v-show="modalStatus" 
+            :movie="movie" 
+            :previewURL="previewURL"
+            :likeStatus="likeStatus"
+            :dislikeStatus="dislikeStatus"
+            :wishStatus="wishStatus"
+          />
+        </div>
 
-    <!-- 좋아요 기능 -->
-    <div @click="likeMovie">
-      <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
-      <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
-      <!-- <p>Movie information that you liked : {{ this.likedMovie }}</p> -->
-    </div>
+        <div class="card d-flex">
+          <div class="row justify-content-center">
+          <!-- 좋아요 기능 -->
+            <div @click="likeMovie"  class="col-5 card border-light py-2" style="max-width: 20rem;">
+              <div v-if="likeStatus" ><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></div>
+              <div v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></div>
+              <!-- <p>Movie information that you liked : {{ this.likedMovie }}</p> -->
+            </div>
+            <div class="col-1"></div>
+            <!-- 별로에요 기능 -->
+            <div @click="dislikeMovie" class="col-5 card border-light py-2">
+              <div v-if="dislikeStatus"><font-awesome-icon :icon="['fas', 'tint']" style="color:#4c6ef5" /></div>
+              <div v-else><font-awesome-icon :icon="['fas', 'tint']" style="color:#adb5bd" /></div>
+            </div>
+          </div>
+        </div>
+          <!-- 찜 기능 -->
+          <div @click="wishMovie" class="card border-light mt-3 mb-1 py-2">
+            <div v-if="wishStatus"><font-awesome-icon :icon="['fas', 'gem']" style="color:#be4bdb" /></div>
+            <div v-else><font-awesome-icon :icon="['fas', 'gem']" style="color:#adb5bd" /></div>
+          </div>
+        
 
-    <!-- 별로에요 기능 -->
-    <div @click="dislikeMovie">
-      <button v-if="dislikeStatus"><font-awesome-icon :icon="['fas', 'tint']" style="color:#4c6ef5" /></button>
-      <button v-else><font-awesome-icon :icon="['fas', 'tint']" style="color:#adb5bd" /></button>
-    </div>
-    <!-- 찜 기능 -->
-    <div @click="wishMovie">
-      <button v-if="wishStatus"><font-awesome-icon :icon="['fas', 'gem']" style="color:#be4bdb" /></button>
-      <button v-else><font-awesome-icon :icon="['fas', 'gem']" style="color:#adb5bd" /></button>
+
+
+      </div>
+
+
+
     </div>
 
   </div>
@@ -227,6 +245,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.svg-inline--fa {
+  font-size: 50px;
+}
 
 </style>

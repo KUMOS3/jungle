@@ -73,7 +73,6 @@ export default new Vuex.Store({
       context.commit('DELETE_JWT')
     },
     getMovies: function (context) {
-      // console.log(context)
       if (this.state.userToken) {
         axios({
           method: 'get',

@@ -1,12 +1,14 @@
 <template>
-  <div class="home">
-    <div v-if="this.$store.state.movies">
+  <div class="container" style="width: 70%;">
+  <div class="home d-flex justify-content-around">
+    <div v-if="this.$store.state.userToken" class="row">
       <MovieListItem
         v-for="(movie, idx) in movies"
         :key="idx"
         :movie="movie"
       />
     </div>
+  </div>
   </div>
 </template>
 
