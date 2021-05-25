@@ -1,21 +1,27 @@
 <template>
   <div>
-        <h5 id="D2" v-if="this.$store.state.userToken" class="my-5">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</h5>
-        <div v-else class="d-flex justify-content-center align-items-center">
-          <div class="col-8" style="text-align:left">
-            <h5 id="D2" class="my-5">Welcome to Jungle!
-              <span class="fa-lg spin" style="color: #2F959A"><font-awesome-icon :icon="['fab', 'pagelines']" spin/></span>
-            </h5>
-            <h1>Let's Jungling!</h1>
-            <div class="d-grid gap-2 my-5" style="height:100vh">
-              <button class="btn btn-lg btn-light mt-5 mb-2" type="button">
-                <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
-              </button>
-              <p class="text-light">Don't have an JUNGLE ID? Create one now</p>
-            </div>
-          </div>
+    <div class="alert alert-dismissible alert-primary Reggae">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <strong>Well done!</strong> You are ready to be a JUNGLER! 
+      <router-link :to="{ name: 'Login'}"> Login</router-link>
+    </div>
+
+    <h5 id="D2" v-if="this.$store.state.userToken" class="my-5">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</h5>
+    <div v-else class="d-flex justify-content-center align-items-center">
+      <div class="col-8" style="text-align:left">
+        <h5 id="D2" class="my-5">Welcome to Jungle!
+          <span class="fa-lg spin" style="color: #2F959A"><font-awesome-icon class="big-icon" :icon="['fab', 'pagelines']" spin/></span>
+        </h5>
+        <h1>Let's Jungling!</h1>
+        <div class="d-grid gap-2 my-5">
+          <button class="btn btn-lg btn-light mt-5 mb-2" type="button">
+            <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
+          </button>
+          <p class="text-light">Don't have an JUNGLE ID? Create one now</p>
         </div>
-      <MovieList/>
+      </div>
+    </div>
+    <MovieList/>
   </div>
 </template>
 
@@ -56,11 +62,11 @@ export default {
 
 <style scoped>
 h1 {
-  font-size: 120px;  
+  font-size: 80px;  
 }
 
 h5 {
-  font-size: 60px;
+  font-size: 30px;
 }
 
 .btn-lg {
@@ -71,5 +77,12 @@ h5 {
 
 .text-light {
   font-size: 20px;
+}
+
+.Reggae {
+font-family: 'Reggae One', cursive;
+font-weight: 500;
+line-height: 1.5;
+color: inherit;
 }
 </style>

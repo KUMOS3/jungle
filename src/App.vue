@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg" :class="color">
       <div class="container-fluid">
-        <router-link class="nav-link active" style="font-size:XX-large" to="/">JUNGLE.</router-link>
+        <router-link class="nav-link active" style="font-size:X-large" to="/">JUNGLE.</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,7 +10,7 @@
         <div class="navbar-collapse collapse show" id="navbarColor02" style="">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <router-link class="nav-link active" to="/">Home</router-link>
+              <router-link class="nav-link" to="/">Home</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/about">About</router-link>
@@ -18,22 +18,21 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/campfire">Campfire</router-link>
             </li>
-            
-              <li v-if="this.$store.state.userToken" class="nav-item">
-                <router-link class="nav-link" to="/profile">Profile</router-link>
-              </li>
-              <li v-if="this.$store.state.userToken" class="nav-item">
-                <router-link class="nav-link" @click.native="deleteJWT" to="#">Logout</router-link>
-              </li>
-              <li v-if="!this.$store.state.userToken" class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'Signup'}">Signup</router-link>
-              </li>
-              <li v-if="!this.$store.state.userToken" class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
-              </li>
+            <li v-if="this.$store.state.userToken" class="nav-item">
+              <router-link class="nav-link" to="/profile">| My Page</router-link>
+            </li>
+            <li v-if="this.$store.state.userToken" class="nav-item">
+              <router-link class="nav-link" @click.native="deleteJWT" to="#">Logout</router-link>
+            </li>
+            <li v-if="!this.$store.state.userToken" class="nav-item">
+              <router-link class="nav-link" :to="{ name: 'Signup'}">Signup</router-link>
+            </li>
+            <li v-if="!this.$store.state.userToken" class="nav-item">
+              <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
+            </li>
           
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Explore</a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item" href="#">Another action</a>
@@ -45,7 +44,7 @@
           </ul>
           <form class="d-flex">
             <input class="form-control me-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
       </div>
@@ -100,5 +99,11 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #FFF;
+}
+
+.border-light {
+  border-color: #ffffff !important;
+  box-shadow: 0 0 2px rgba(68, 217, 232, 0.9), 0 0 4px rgba(68, 217, 232, 0.4),
+  0 0 1rem rgba(68, 217, 232, 0.3), 0 0 4rem rgba(68, 217, 232, 0.1);
 }
 </style>

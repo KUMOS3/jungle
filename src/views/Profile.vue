@@ -1,81 +1,84 @@
 <template>
   <div>
-    <div class="d-flex justify-content-center align-items-center">
-      <div class="col-8" style="text-align:left">
-        <h5 id="D2" class="my-5">
-        </h5>
-        <h1 class="my-5">
-          Profile: Jungler {{ this.$store.state.userInfo.nickname }}
-          <span class="fa-lg spin" style="color: #2F959A"><font-awesome-icon :icon="['fab', 'pagelines']" spin/></span>
-        </h1>
+      <!-- 토글시키는 버튼, nav바 테마에서 차용 -->
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <button v-if="!showAchievement" id="reviewBtn" data-bs-toggle="tab" href="#Achievement" @click="goAchievement" class="btn big-btn btn-dark mt-5 mb-2" type="button">
+            <p class="shineBtn">Go to <br> JUNGLER's <br> Title list</p>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button v-if="showAchievement" data-bs-toggle="tab" href="#UserInfo" @click="goAchievement" class="btn big-btn btn-dark mt-5 mb-2" type="button">
+            <p class="shineBtn">Read Profile</p>
+          </button>
+        </li>
+      </ul>
 
-
-          <div v-if="this.$store.state.userToken" class="D2">
-            {{ this.$store.state.userInfo }}
-            <p>ID:  {{ this.$store.state.userInfo.username }}</p>
-            <p>nickname:  {{ this.$store.state.userInfo.nickname }}</p>
-            <p>date_joined:  {{ this.$store.state.userInfo.date_joined }}</p>
-            <p>birth_year:  {{ this.$store.state.userInfo.birth_year }}</p>
-            <p>favorite_movie:  {{ this.$store.state.userInfo.favorite_movie }}</p>
-            <p>like_movies:  {{ this.$store.state.userInfo.like_movies }}</p>
-            <p>dislike_movies:  {{ this.$store.state.userInfo.dislike_movies }}</p>
-            <p>wish_movies:  {{ this.$store.state.userInfo.wish_movies }}</p>     
-
-            <ul v-if="this.$store.state.userToken" class="D2 list-group">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Movies that you liked : {{ this.$store.state.userInfo.like_movies }}
-                <span class="badge bg-primary rounded-pill">14</span>
-              </li>
-              <li class="D2 list-group-item d-flex justify-content-between align-items-center">
-                Movies that you disliked : {{ this.$store.state.userInfo.dislike_movies }}
-                <span class="badge bg-primary rounded-pill">2</span>
-              </li>
-              <li class="D2 list-group-item d-flex justify-content-between align-items-center">
-                Movies that you wished : {{ this.$store.state.userInfo.wish_movies }}
-                <span class="badge bg-primary rounded-pill">1</span>
-              </li>
-            </ul>
-          </div>
-
-
-        </div>
+    <!-- 실제로 토글되어 보여주는 컴포넌트 -->
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active show" id="UserInfo">
+        <UserInfo/>
       </div>
+      <div class="tab-pane fade" id="Achievement">
+        <Achievement/>
+      </div>  
+    </div>
   </div>
 </template>
 
 <script>
+import UserInfo from '@/components/UserInfo'
+import Achievement from '@/components/Achievement'
 import { mapMutations } from 'vuex'
 
 export default {
   name: 'Profile',
+  components: {
+    UserInfo,
+    Achievement
+  },
   data: function () {
     return {
       userid: '',
+      showAchievement: false
     }
   },
   methods: {
-    getUserInfo: function () {
-      this.userid = this.$store.getters.decodedToken.user_id
-      this.$store.dispatch('getUserInfo', this.userid)
+    goAchievement: function () {
+      this.showAchievement = !this.showAchievement
     },
     ...mapMutations([
       'CHANGE_COLOR'
     ])
   },
-  created: function () {
-    this.CHANGE_COLOR('day')
-    document.body.style.backgroundImage = "linear-gradient( #0C2F4D 80%,  #092742 100% )"
-    this.getUserInfo()
-  }
 }
 </script>
 
-<style>
+<style scoped>
+.big-btn {
+  position: fixed;
+  bottom: 5px;
+  right: 15px;
+  width: 25vh;
+  height: 15vh;
+  font-size: 1.2rem;
+}
+
 h1 {
-  font-size: 80px;  
+  font-size: 20px;  
 }
 
 body {
   font-size: 25px;
 }
+
+.shineBtn {
+  font-family: 'Reggae One', cursive;
+  font-weight: 500;
+  line-height: 1.5;
+  color: inherit;
+  text-shadow: 0 0 1px rgba(50, 251, 226, 0.6), 0 0 3px rgba(50, 251, 226, 0.5),
+    0 0 0.5rem rgba(50, 251, 226, 0.3), 0 0 2rem rgba(50, 251, 226, 0.2);
+}
+
 </style>
