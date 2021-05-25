@@ -238,9 +238,6 @@ export default {
 </script>
 
 <style>
-.big-icon {
-  font-size: 50px;
-}
 
 .movie-btn:hover {
   border-color: #ffffff !important;

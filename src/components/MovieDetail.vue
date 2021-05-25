@@ -9,8 +9,10 @@
             <button @click="closeDetail" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>movie_id= {{ movie.id }}</p>
+            <p>{{ movie }}</p>
+            <p>movie_genres= {{ movieGenres }}</p>
             <iframe v-if="previewURL" :src="previewURL" frameborder="0"></iframe>
+            <p>overview= {{ movie.overview }}</p>
             <p>overview= {{ movie.overview }}</p>
             <p>release_date= {{ movie.release_date }}</p>
             <p>poster_path= {{ movie.poster_path }}</p>
@@ -26,7 +28,6 @@
             <p v-if="this.$store.state.userToken">Movies that you wished : {{ this.$store.state.userInfo.wish_movies }}</p>
 
             <hr>
-            <p v-if="this.$store.state.userToken">{{ this.$store.state.userInfo }}</p>
 
 
             <div class="row justify-content-center">
@@ -91,7 +92,14 @@ export default {
     },
   },
   computed:{
-  ...mapGetters([
+    movieGenres: function () {
+      let genrelist = []
+      for (var genre in this.movie.genres) {
+        genrelist.push(this.movie.genres[genre].name)
+      }
+      return genrelist
+    },
+    ...mapGetters([
     // 'movieTitle',
     // 'movieContent'
     // 'movieOverview'
