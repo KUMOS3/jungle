@@ -10,14 +10,16 @@ import { faPagelines } from '@fortawesome/free-brands-svg-icons'
 import { faFireAlt } from '@fortawesome/free-solid-svg-icons'
 import { faTint } from '@fortawesome/free-solid-svg-icons'
 import { faGem } from '@fortawesome/free-solid-svg-icons'
+import { faComment } from '@fortawesome/free-solid-svg-icons'
 import { faCheckCircle } from '@fortawesome/free-regular-svg-icons'
 
 // (아이콘2) 라이브러리 추가
-library.add(faCheckCircle)
 library.add(faPagelines)
 library.add(faFireAlt)
 library.add(faTint)
 library.add(faGem)
+library.add(faComment)
+library.add(faCheckCircle)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 // (TO) fontawesome 사용하기

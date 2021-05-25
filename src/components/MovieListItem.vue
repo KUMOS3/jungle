@@ -2,8 +2,7 @@
   <div class="mb-3 col-xs-12 col-sm-6 col-lg-4 px-4 my-5">
     <!-- 영화 포스터 -->
     <div class="card border-light">
-    <!-- <div class="card border-light mb-3 d-flex justify-content-center col-xs-12 col-sm-6 col-lg-4"> -->
-      <a @click="showDetail"><img :src="moviePosterURL" class="card-img-top" style="height: 350px" alt=""></a>
+      <a @click="showDetail"><img :src="moviePosterURL" class="card-img-top" style="height: 380px" alt=""></a>
       <div class="card-body">
         <div v-if="this.$store.state.userToken">
           <MovieDetail
@@ -23,32 +22,25 @@
         <div class="card d-flex">
           <div class="row justify-content-center">
           <!-- 좋아요 기능 -->
-            <div @click="likeMovie"  class="col-5 card border-light py-2" style="max-width: 20rem;">
-              <div v-if="likeStatus" ><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></div>
-              <div v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></div>
+            <div @click="likeMovie"  :class="{ 'border-primary': likeStatus }" class="col-5 card py-2 movie-btn" style="max-width: 20rem;">
+              <div v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#fd7e14" /></div>
+              <div v-else><font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#dbdad9" /></div>
               <!-- <p>Movie information that you liked : {{ this.likedMovie }}</p> -->
             </div>
             <div class="col-1"></div>
             <!-- 별로에요 기능 -->
-            <div @click="dislikeMovie" class="col-5 card border-light py-2">
-              <div v-if="dislikeStatus"><font-awesome-icon :icon="['fas', 'tint']" style="color:#4c6ef5" /></div>
-              <div v-else><font-awesome-icon :icon="['fas', 'tint']" style="color:#adb5bd" /></div>
+            <div @click="dislikeMovie" :class="{ 'border-secondary': dislikeStatus }" class="col-5 card py-2 movie-btn">
+              <div v-if="dislikeStatus"><font-awesome-icon :icon="['fas', 'tint']" class="big-icon" style="color:#4c6ef5" /></div>
+              <div v-else><font-awesome-icon :icon="['fas', 'tint']" class="big-icon" style="color:#adb5bd" /></div>
             </div>
           </div>
         </div>
           <!-- 찜 기능 -->
-          <div @click="wishMovie" class="card border-light mt-3 mb-1 py-2">
-            <div v-if="wishStatus"><font-awesome-icon :icon="['fas', 'gem']" style="color:#be4bdb" /></div>
-            <div v-else><font-awesome-icon :icon="['fas', 'gem']" style="color:#adb5bd" /></div>
+          <div @click="wishMovie" :class="{ 'border-success': wishStatus }" class="card mt-3 mb-1 py-2 movie-btn">
+            <div v-if="wishStatus"><font-awesome-icon :icon="['fas', 'gem']" class="big-icon" style="color:#be4bdb" /></div>
+            <div v-else><font-awesome-icon :icon="['fas', 'gem']" class="big-icon" style="color:#adb5bd" /></div>
           </div>
-        
-
-
-
       </div>
-
-
-
     </div>
 
   </div>
@@ -245,9 +237,15 @@ export default {
 }
 </script>
 
-<style scoped>
-.svg-inline--fa {
+<style>
+.big-icon {
   font-size: 50px;
+}
+
+.movie-btn:hover {
+  border-color: #ffffff !important;
+  box-shadow: 0 0 2px rgba(68, 217, 232, 0.9), 0 0 4px rgba(68, 217, 232, 0.4),
+    0 0 1rem rgba(68, 217, 232, 0.3), 0 0 4rem rgba(68, 217, 232, 0.1);
 }
 
 </style>

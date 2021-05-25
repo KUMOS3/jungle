@@ -22,6 +22,8 @@ export default new Vuex.Store({
     userInfo: null,
     // 리뷰 전체 목록
     reviews: null,
+    // // 리뷰의 영화를 찾아줄 리스트
+    // movieListForReview: null,
     // // ReviewListItem
     // reviewItem: null,
     // // 팝업창을 띄울 review
@@ -39,6 +41,11 @@ export default new Vuex.Store({
     },
     GET_MOVIES: function (state, data) {
       state.movies = data
+      // 리뷰에서 아이디값으로 타이틀과 장르가 조회 가능한 리스트 만들기
+      // for (let movie in Object.entries(state.movies)) {
+      //   state.movieListForReview[movie.id] = {title:movie.title, genre:movie.genre_id}
+
+      // }
     },
     GET_USER_INFO: function (state, data) {
       state.userInfo = data
@@ -173,9 +180,6 @@ export default new Vuex.Store({
         return 'navbar-dark bg-primary'
       }
     }
-    // commentsCount: function (state) {
-    //   return state.comments.length
-    // }
   },
   modules: {
   }
