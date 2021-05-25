@@ -10356,8 +10356,7 @@ table {
   color: #fff;
 }
 .navbar.bg-primary {
-  box-shadow: 0 0 2px rgba(12, 47, 77, 0.9), 0 0 4px rgba(12, 47, 77, 0.4),
-    0 0 1rem rgba(12, 47, 77, 0.3), 0 0 4rem rgba(12, 47, 77, 0.1);
+  box-shadow: 0 12 12px rgba(12, 47, 77, 1),
 }
 .navbar.bg-secondary {
   box-shadow: 0 0 2px rgba(234, 57, 184, 0.9), 0 0 4px rgba(234, 57, 184, 0.4),

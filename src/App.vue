@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
-    <nav class="navbar navbar-expand-lg" :class="color">
+  <div id="app" class="background">
+    <Interaction/>
+    <nav class="sticky navbar navbar-expand-lg" :class="color">
       <div class="container-fluid">
         <router-link class="nav-link active" style="font-size:X-large" to="/">JUNGLE.</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
@@ -50,7 +51,7 @@
       </div>
     </nav>
 
-    <router-view/>
+    <router-view class="background"/>
 
 
   </div>
@@ -58,9 +59,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
+import Interaction from '@/components/Interaction'
 export default {
   name: 'App',
+  components: {
+    Interaction,
+  },
   methods: {
     deleteJWT: function () {
       this.$store.dispatch('deleteJWT')
@@ -86,6 +90,19 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #FFF;
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 0px;
+  margin-top: -100px;
+  padding-bottom: 8px;
+}
+
+nav {
+    opacity: .99;
+    z-index: 10000;
 }
 
 #nav {
@@ -101,9 +118,15 @@ export default {
   color: #FFF;
 }
 
+.background {
+  background-image: linear-gradient(#0c2f4d 80%, #0f051d 100%);
+  opacity: .99;
+  z-index: 9000;
+  
 .border-light {
   border-color: #ffffff !important;
   box-shadow: 0 0 2px rgba(68, 217, 232, 0.9), 0 0 4px rgba(68, 217, 232, 0.4),
   0 0 1rem rgba(68, 217, 232, 0.3), 0 0 4rem rgba(68, 217, 232, 0.1);
+  
 }
 </style>
