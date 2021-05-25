@@ -247,5 +247,11 @@ export default {
   box-shadow: 0 0 2px rgba(68, 217, 232, 0.9), 0 0 4px rgba(68, 217, 232, 0.4),
     0 0 1rem rgba(68, 217, 232, 0.3), 0 0 4rem rgba(68, 217, 232, 0.1);
 }
-
+.big-icon {
+  transition: 0.1s;
+}
+.big-icon:active {
+  transform: scale(0.1);
+  opacity: 0.5;
+}
 </style>

@@ -6,6 +6,7 @@ import Profile from '@/views/Profile'
 import Campfire from '@/views/Campfire'
 import About from '@/views/About'
 import Signup from '@/views/Signup'
+import Jungle from '@/views/Jungle'
 
 Vue.use(VueRouter)
 
@@ -43,6 +44,11 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: Signup
+  },
+  {
+    path: '/jungle',
+    name: 'Jungle',
+    component: Jungle
   },
 ]
 

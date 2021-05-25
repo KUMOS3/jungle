@@ -1,9 +1,9 @@
 <template>
-  <div>
-        <h5 id="D2" v-if="this.$store.state.userToken" class="my-5">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</h5>
+  <div class="background">
+        <h5 id="D2" v-if="this.$store.state.userToken" class="py-5">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</h5>
         <div v-else class="d-flex justify-content-center align-items-center">
           <div class="col-8" style="text-align:left">
-            <h5 id="D2" class="my-5">Welcome to Jungle!
+            <h5 id="D2" class=" py-5">Welcome to Jungle!
               <span class="fa-lg spin" style="color: #2F959A"><font-awesome-icon :icon="['fab', 'pagelines']" spin/></span>
             </h5>
             <h1>Let's Jungling!</h1>
