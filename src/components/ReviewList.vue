@@ -46,6 +46,7 @@ export default {
     createReview: function () {
     // console.log(this.$store)
     // 공백입력 받지않음
+    console.log(this.reviewInfo)
     this.$store.dispatch('createReview', this.reviewInfo)
     this.reviewTitle = ''
     this.reviewContent = ''
