@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg" :class="color">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">JUNGLE.</a>
+        <router-link class="nav-link active" style="font-size:XX-large" to="/">JUNGLE.</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -82,7 +82,7 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Noto Sans KR, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

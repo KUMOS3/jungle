@@ -4,10 +4,6 @@
   </div>
 </template>
 
-<template>
-  
-</template>
-
 <script>
 import { mapMutations } from 'vuex'
 
@@ -26,5 +22,4 @@ export default {
 </script>
 
 <style>
-
 </style>
