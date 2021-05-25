@@ -16,7 +16,7 @@
             <p>created_at= {{ review.created_at }}</p>
 
             <!-- like -->
-            <div @click="callLike">
+            <div @click="callLike" class="review-like-btn">
               <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
               <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
               <p v-if="this.$store.state.userToken">Reviews that you liked : {{ this.$store.state.userInfo.like_Reviews }}</p>
@@ -117,10 +117,6 @@ export default {
     CommentsCount: function () {
       return this.review.comments.length
     }
-  // ...mapGetters([
-  //   'comments'
-  //   'commentsCount'
-  // ])
 }
 }
 </script>
