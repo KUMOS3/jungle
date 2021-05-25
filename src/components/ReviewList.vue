@@ -1,20 +1,19 @@
 <template>
-  <div class="home">
-    <!-- 현재 review create는 title을 입력받아 title만 보여주는 상태입니다. -->
-    <div>
-      <input type="text" v-model="reviewInfo.movie" placeholder="Movie">
-      <input type="text" v-model="reviewInfo.movie_rate" placeholder="Movie rate">
-      <input type="text" v-model="reviewInfo.title" placeholder="Title">
-      <input type="text" v-model="reviewInfo.content" placeholder="Content">
-      <button @click="createReview" @keyup.enter="createReview">Submit</button>
+  <div class="container" style="width: 90%;">
+
+    <h1 id="D2" class="my-5">Let's gather around the campfire   <font-awesome-icon class="big-icon" :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></h1>
+
+    <div class="home d-flex justify-content-around">
+      <div v-if="this.$store.state.userToken" class="row">
+          <ReviewListItem
+            v-for="(review, idx) in reviews"
+            :key="idx"
+            :review="review"
+          />
+      </div>
     </div>
-    <div v-if="this.$store.state.reviews">
-      <ReviewListItem
-        v-for="(review, idx) in reviews"
-        :key="idx"
-        :review="review"
-      />
-    </div>
+
+    
   </div>
 </template>
 
@@ -28,28 +27,12 @@ export default {
   props: {
     review: Object
   },
-  data: function () {
-  return {
-      reviewInfo: {
-        title: null,
-        content: null,
-        movie: null,
-        movie_rate: '',
-        user: this.$store.getters.decodedToken.user_id,
-      }
-    }
-  },
   components: {
     ReviewListItem
   },
   methods: {
-    createReview: function () {
-    // console.log(this.$store)
-    // 공백입력 받지않음
-    console.log(this.reviewInfo)
-    this.$store.dispatch('createReview', this.reviewInfo)
-    this.reviewTitle = ''
-    this.reviewContent = ''
+    goCreate: function () {
+      this.$emit('go-create')
     },
   },
   created: function () {
@@ -58,8 +41,17 @@ export default {
   computed: {
     ...mapGetters([
       'reviews',
-      'commentsCount'
     ])
   }
 }
 </script>
+
+<style>
+h1 {
+  font-size: 60px;  
+}
+
+.big-icon {
+  font-size: 50px;
+}
+</style>

@@ -33,7 +33,7 @@
           <div class="form-group my-4">
             <label for="SelectBirthYear" class="form-label mt-4">Birth Year</label>
             <select v-model="credential.birth_year" class="form-select" id="SelectBirthYear">
-              <option value=null>Select Birth year</option>
+              <option disabled value="">Select Birth year</option>
               <option>2021</option>
               <option>2020</option>
               <option>2019</option>

@@ -13,13 +13,10 @@
               <router-link class="nav-link active" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <router-link class="nav-link" to="/about">About</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/campfire">Campfire</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/about">About</router-link>
             </li>
             
               <li v-if="this.$store.state.userToken" class="nav-item">
@@ -29,10 +26,10 @@
                 <router-link class="nav-link" @click.native="deleteJWT" to="#">Logout</router-link>
               </li>
               <li v-if="!this.$store.state.userToken" class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
+                <router-link class="nav-link" :to="{ name: 'Signup'}">Signup</router-link>
               </li>
               <li v-if="!this.$store.state.userToken" class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'Signup'}">Signup</router-link>
+                <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
               </li>
           
             <li class="nav-item dropdown">
