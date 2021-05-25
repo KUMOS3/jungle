@@ -3,12 +3,12 @@
       <!-- 토글시키는 버튼, nav바 테마에서 차용 -->
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <button id="reviewBtn" v-if="showCreate" data-bs-toggle="tab" href="#reviewList" @click="goCreate" class="btn big-btn btn-dark mt-5 mb-2" type="button">
+          <button id="reviewBtn" v-if="showCreate" data-bs-toggle="tab" href="#reviewList" @click="goCreate" class="btn big-btn shineBtn btn-light mt-5 mb-2" type="button">
             <h5>Go to Review list</h5>
           </button>
         </li>
         <li class="nav-item">
-          <button v-if="!showCreate" data-bs-toggle="tab" href="#createReview" @click="goCreate" class="btn big-btn btn-dark mt-5 mb-2" type="button">
+          <button v-if="!showCreate" data-bs-toggle="tab" href="#createReview" @click="goCreate" class="btn big-btn btn-light shineBtn mt-5 mb-2" type="button">
             <h5>Write Review</h5>
           </button>
         </li>
@@ -64,13 +64,23 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .big-btn {
   position: fixed;
   bottom: 5px;
   right: 15px;
   width: 25vh;
   height: 15vh;
-  font-size: 20px;
+  font-size: 1.2rem;
 }
+
+.shineBtn {
+  font-family: 'Reggae One', cursive;
+  font-weight: 500;
+  line-height: 1.5;
+  color: inherit;
+  text-shadow: 0 0 1px rgba(50, 251, 226, 0.6), 0 0 3px rgba(50, 251, 226, 0.5),
+    0 0 0.5rem rgba(50, 251, 226, 0.3), 0 0 2rem rgba(50, 251, 226, 0.2);
+}
+
 </style>

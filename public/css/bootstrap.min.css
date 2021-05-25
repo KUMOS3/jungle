@@ -56,64 +56,21 @@
 }
 
 @font-face {
-  font-family: Lobster;
+  font-family: 'Reggae One', cursive;
+  src: url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
   font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lobster/v23/neILzCirqoswsqX9zo-mM5Ez.woff2)
-    format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-    U+FE2E-FE2F;
-}
-@font-face {
-  font-family: Lobster;
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lobster/v23/neILzCirqoswsqX9zoamM5Ez.woff2)
-    format("woff2");
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-  font-family: Lobster;
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lobster/v23/neILzCirqoswsqX9zo2mM5Ez.woff2)
-    format("woff2");
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
-    U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-  font-family: Lobster;
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lobster/v23/neILzCirqoswsqX9zoymM5Ez.woff2)
-    format("woff2");
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: Lobster;
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lobster/v23/neILzCirqoswsqX9zoKmMw.woff2)
-    format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
+  font-weight: 700;
+  unicode-range:U+0041-005A, U+0061-007A, U+0030-0039;
 }
 
+
 @font-face {
-  font-family: 'D2 coding';
-  font-style: normal;
-  font-weight: 400;
-  src: url('D2Coding.eot');
-  src: local('※'), local('D2Coding'),
-       url('D2Coding.eot?#iefix') format('embedded-opentype'),
-       url('D2Coding.woff2') format('x-woff2'),
-       url('D2Coding.woff') format('woff'),
-       url('D2Coding.ttf') format('truetype'),
-       url('D2Coding.svg') format('svg');
+  font-family: 'Noto Sans KR', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+  unicode-range:U+AC00-U+D7A3;
 }
-@font-face {
+
+/* @font-face {
   font-family: 'D2 coding';
   font-style: normal;
   font-weight: 700;
@@ -122,9 +79,9 @@
        url('D2CodingBold.eot?#iefix') format('embedded-opentype'),
        url('D2CodingBold.woff2') format('x-woff2'),
        url('D2CodingBold.woff') format('woff'),
-       url('D2CodingBold.ttf') format('truetype'),
+       
        url('D2CodingBold.svg') format('svg');
-}
+} */
 
 
 body {
@@ -349,7 +306,7 @@ table {
 caption {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: rgba(50, 251, 226, 0.3);
+  color: rgba(255, 255, 255, 0.3);
   text-align: left;
 }
 th {
@@ -2820,6 +2777,18 @@ textarea.form-control.is-invalid {
 .was-validated .input-group .form-select:invalid:focus {
   z-index: 3;
 }
+
+
+
+
+.big-icon {
+  font-size: 50px;
+}
+
+
+
+
+
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -3096,36 +3065,36 @@ fieldset:disabled .btn {
 }
 .btn-light {
   color: #fff;
-  background-color: #2F959A;
-  border-color: #2F959A;
+  background-color: #a061ffde;
+  border-color: #170229;
 }
 .btn-light:hover {
   color: #fff;
-  background-color: #50afb4;
-  border-color: #50afb4;
+  background-color: #A061FF;
+  border-color: #120221;
 }
 .btn-check:focus + .btn-light,
 .btn-light:focus {
   color: #fff;
-  background-color: #68c5ca;
-  border-color: #68c5ca;
-  box-shadow: 0 0 0 0.25rem rgba(96, 223, 235, 0.5);
+  background-color: #a061ffde;
+  border-color: #120221;
+  box-shadow: 0 0 0 0.25rem rgba(160, 97, 255, 0.5);
 }
 .btn-check:active + .btn-light,
 .btn-check:checked + .btn-light,
 .btn-light.active,
 .btn-light:active,
 .show > .btn-light.dropdown-toggle {
-  color: #fff;
-  background-color: #36aeba;
-  border-color: #33a3ae;
+  color: #A061FF;
+  background-color: #ffffff;
+  border-color: #A061FF;
 }
 .btn-check:active + .btn-light:focus,
 .btn-check:checked + .btn-light:focus,
 .btn-light.active:focus,
 .btn-light:active:focus,
 .show > .btn-light.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(96, 223, 235, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(58, 40, 73, 0.5);
 }
 .btn-light.disabled,
 .btn-light:disabled {
@@ -3135,36 +3104,36 @@ fieldset:disabled .btn {
 }
 .btn-dark {
   color: #fff;
-  background-color: #a061ffde;
-  border-color: #170229;
+  background-color: #2F959A;
+  border-color: #2F959A;
 }
 .btn-dark:hover {
   color: #fff;
-  background-color: #A061FF;
-  border-color: #120221;
+  background-color: #50afb4;
+  border-color: #50afb4;
 }
 .btn-check:focus + .btn-dark,
 .btn-dark:focus {
   color: #fff;
-  background-color: #a061ffde;
-  border-color: #120221;
-  box-shadow: 0 0 0 0.25rem rgba(160, 97, 255, 0.5);
+  background-color: #68c5ca;
+  border-color: #68c5ca;
+  box-shadow: 0 0 0 0.25rem rgba(96, 223, 235, 0.5);
 }
 .btn-check:active + .btn-dark,
 .btn-check:checked + .btn-dark,
 .btn-dark.active,
 .btn-dark:active,
 .show > .btn-dark.dropdown-toggle {
-  color: #A061FF;
-  background-color: #ffffff;
-  border-color: #A061FF;
+  color: #fff;
+  background-color: #36aeba;
+  border-color: #33a3ae;
 }
 .btn-check:active + .btn-dark:focus,
 .btn-check:checked + .btn-dark:focus,
 .btn-dark.active:focus,
 .btn-dark:active:focus,
 .show > .btn-dark.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(58, 40, 73, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(96, 223, 235, 0.5);
 }
 .btn-dark.disabled,
 .btn-dark:disabled {
@@ -3377,17 +3346,17 @@ fieldset:disabled .btn {
   background-color: transparent;
 }
 .btn-outline-light {
-  color: #44d9e8;
-  border-color: #44d9e8;
+  color: #a061ffde;
+  border-color: #a061ffde;
 }
 .btn-outline-light:hover {
   color: #fff;
-  background-color: #44d9e8;
-  border-color: #44d9e8;
+  background-color: #a061ff;
+  border-color: #a061ff;
 }
 .btn-check:focus + .btn-outline-light,
 .btn-outline-light:focus {
-  box-shadow: 0 0 0 0.25rem rgba(68, 217, 232, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(160, 97, 255, 0.5);
 }
 .btn-check:active + .btn-outline-light,
 .btn-check:checked + .btn-outline-light,
@@ -3395,15 +3364,15 @@ fieldset:disabled .btn {
 .btn-outline-light.dropdown-toggle.show,
 .btn-outline-light:active {
   color: #fff;
-  background-color: #44d9e8;
-  border-color: #44d9e8;
+  background-color: #a061ffde;
+  border-color: #a061ffde;
 }
 .btn-check:active + .btn-outline-light:focus,
 .btn-check:checked + .btn-outline-light:focus,
 .btn-outline-light.active:focus,
 .btn-outline-light.dropdown-toggle.show:focus,
 .btn-outline-light:active:focus {
-  box-shadow: 0 0 0 0.25rem rgba(68, 217, 232, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(160, 97, 255, 0.5);
 }
 .btn-outline-light.disabled,
 .btn-outline-light:disabled {
@@ -3898,7 +3867,7 @@ fieldset:disabled .btn {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: #32fbe2;
+  color: #FFF;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
@@ -3910,7 +3879,9 @@ fieldset:disabled .btn {
 }
 .nav-link:focus,
 .nav-link:hover {
-  color: #28c9b5;
+  color: #f4c2c2;
+  text-shadow: 0 0 1px rgba(244, 194, 194, 0.6), 0 0 3px rgba(244, 194, 194, 0.5),
+    0 0 0.5rem rgba(244, 194, 194, 0.3), 0 0 2rem rgba(244, 194, 194, 0.2);
 }
 .nav-link.disabled {
   color: rgba(50, 251, 226, 0.3);
@@ -10117,7 +10088,7 @@ body {
 .h2,
 h1,
 h2 {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10125,8 +10096,13 @@ h2 {
     0 0 0.5rem rgba(50, 251, 226, 0.3), 0 0 2rem rgba(50, 251, 226, 0.2);
 }
 
+#D3 {
+  font-family: 'Reggae One', cursive;
+}
+
+
 #D2 {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10147,7 +10123,7 @@ h6 {
 }
 
 .text-primary {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10155,7 +10131,7 @@ h6 {
     0 0 5px rgba(111, 66, 193, 0.2);
 }
 .text-secondary {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10163,7 +10139,7 @@ h6 {
     0 0 5px rgba(234, 57, 184, 0.2);
 }
 .text-success {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10171,7 +10147,7 @@ h6 {
     0 0 5px rgba(60, 242, 129, 0.2);
 }
 .text-info {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10179,7 +10155,7 @@ h6 {
     0 0 5px rgba(27, 162, 246, 0.2);
 }
 .text-warning {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10187,7 +10163,7 @@ h6 {
     0 0 5px rgba(255, 193, 7, 0.2);
 }
 .text-danger {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10195,15 +10171,15 @@ h6 {
     0 0 5px rgba(228, 76, 85, 0.2);
 }
 .text-light {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
-  text-shadow: 0 0 1px rgba(68, 217, 232, 0.3), 0 0 2px rgba(68, 217, 232, 0.3),
-    0 0 5px rgba(68, 217, 232, 0.2);
+  text-shadow: 0 0 1px rgba(160, 97, 255, 0.3), 0 0 2px rgba(160, 97, 255, 0.3),
+    0 0 5px rgba(160, 97, 255, 0.2);
 }
 .text-dark {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10211,7 +10187,7 @@ h6 {
     0 0 5px rgba(23, 2, 41, 0.2);
 }
 .text-white {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10230,7 +10206,7 @@ h6 {
 .text-white h4,
 .text-white h5,
 .text-white h6 {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10239,7 +10215,7 @@ h6 {
     0 0 2rem rgba(255, 255, 255, 0.2);
 }
 .text-muted {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10247,7 +10223,7 @@ h6 {
     0 0 5px rgba(5, 245, 215, 0.2);
 }
 a {
-  font-family: D2Coding, cursive;
+  font-family: 'Reggae One', cursive;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -10343,8 +10319,8 @@ table {
 }
 .btn-light,
 .btn-outline-light {
-  box-shadow: 0 0 2px rgba(68, 217, 232, 0.9), 0 0 4px rgba(68, 217, 232, 0.4),
-    0 0 1rem rgba(68, 217, 232, 0.3), 0 0 4rem rgba(68, 217, 232, 0.1);
+  box-shadow: 0 0 2px rgba(160, 97, 255, 0.9), 0 0 4px rgba(160, 97, 255, 0.4),
+    0 0 1rem rgba(160, 97, 255, 0.3), 0 0 4rem rgba(160, 97, 255, 0.1);
 }
 .btn-light {
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.3),
@@ -10403,8 +10379,8 @@ table {
     0 0 1rem rgba(228, 76, 85, 0.3), 0 0 4rem rgba(228, 76, 85, 0.1);
 }
 .navbar.bg-light {
-  box-shadow: 0 0 2px rgba(68, 217, 232, 0.9), 0 0 4px rgba(68, 217, 232, 0.4),
-    0 0 1rem rgba(68, 217, 232, 0.3), 0 0 4rem rgba(68, 217, 232, 0.1);
+  box-shadow: 0 0 2px rgba(160, 97, 255, 0.9), 0 0 4px rgba(160, 97, 255, 0.4),
+    0 0 1rem rgba(160, 97, 255, 0.3), 0 0 4rem rgba(160, 97, 255, 0.1);
 }
 .navbar.bg-dark {
   box-shadow: 0 0 2px rgba(68, 0, 157, 0.9), 0 0 4px rgba(68, 0, 157, 0.4),
@@ -10688,8 +10664,8 @@ legend {
     0 0 1rem rgba(228, 76, 85, 0.3), 0 0 4rem rgba(228, 76, 85, 0.1);
 }
 .card.border-light {
-  box-shadow: 0 0 2px rgba(68, 217, 232, 0.9), 0 0 4px rgba(68, 217, 232, 0.4),
-    0 0 1rem rgba(68, 217, 232, 0.3), 0 0 4rem rgba(68, 217, 232, 0.1);
+  box-shadow: 0 0 2px rgba(160, 97, 255, 0.9), 0 0 4px rgba(160, 97, 255, 0.4),
+    0 0 1rem rgba(160, 97, 255, 0.3), 0 0 4rem rgba(160, 97, 255, 0.1);
 }
 .card.border-dark {
   box-shadow: 0 0 2px rgba(111, 66, 193, 0.9), 0 0 4px rgba(111, 66, 193, 0.4),
