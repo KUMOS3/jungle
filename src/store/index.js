@@ -31,7 +31,9 @@ export default new Vuex.Store({
     // // 팝업창을 띄울 review
     // selectedReview:null
     inputReview: null,
-    color: 'dark'
+    color: 'dark',
+    // 어떤 애니메이션을 보여줄지 혹은 안보여줄지 정하는 변수
+    imagetoggle: false
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -60,6 +62,18 @@ export default new Vuex.Store({
     },
     CHANGE_COLOR: function (state, color) {
       state.color = color
+    },
+    NO_ANIMATION: function (state) {
+      state.imagetoggle = false
+    },
+    JUNGLE_ANIMATION: function (state) {
+      state.imagetoggle = 1
+    },
+    DAY_ANIMATION: function (state) {
+      state.imagetoggle = 2
+    },
+    NIGHT_ANIMATION: function (state) {
+      state.imagetoggle = 3
     }
   },
   actions: {
