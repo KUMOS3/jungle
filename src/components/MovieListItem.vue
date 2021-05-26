@@ -164,6 +164,7 @@ export default {
             this.likeStatus = !this.likeStatus
               this.userid = this.$store.getters.decodedToken.user_id
               this.$store.dispatch('getUserInfo', this.userid)
+              this.$emit('achieve')
           })
           .catch((err) => {
             console.log(err)
@@ -188,6 +189,7 @@ export default {
             this.dislikeStatus = !this.dislikeStatus
               this.userid = this.$store.getters.decodedToken.user_id
               this.$store.dispatch('getUserInfo', this.userid)
+              this.$emit('achieve')
           })
           .catch((err) => {
             console.log(err)
@@ -208,6 +210,7 @@ export default {
             this.wishStatus = !this.wishStatus
               this.userid = this.$store.getters.decodedToken.user_id
               this.$store.dispatch('getUserInfo', this.userid)
+              this.$emit('achieve')
           })
           .catch((err) => {
             console.log(err)

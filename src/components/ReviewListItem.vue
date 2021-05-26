@@ -108,10 +108,6 @@ export default {
           console.log(err)
         })
     },
-    getReviewMovie: function () {
-      // console.log(this.review)
-      // console.log(this.$store.state.movies)
-    }
   },
   filters: {
     substring: function (str) {

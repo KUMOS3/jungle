@@ -9,6 +9,7 @@
 
 
         <div v-if="this.$store.state.userToken" class="D2 py-5 px-4 border-light" style="font-size: 20px;">
+          <p>{{ this.$store.state.userInfo }}</p>
           <span class="shine">ID:  </span><span>{{ this.$store.state.userInfo.username }}</span>
           <br>
           <span class="shine">Jungler's Name:  </span><span>{{ this.$store.state.userInfo.nickname }}</span>

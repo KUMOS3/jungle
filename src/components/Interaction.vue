@@ -15,7 +15,7 @@
         </div>
     </section>
 
-    <section class="subPage">
+    <section class="subPage" :class="{ day : this.$store.state.imagetoggle == 2, night : this.$store.state.imagetoggle == 3}">
     <div  class="img" :style="{ backgroundImage: 'url(' + require('@/assets/jungle_night/night_9.png') + ')' }" id="element_9"></div>
     </section>
   </main>
@@ -136,7 +136,7 @@ export default {
 
 body {
   overflow-x: hidden;
-  background-color: #0C2F4D;
+  /* background-color: #0C2F4D; */
 }
 
 main {
@@ -217,8 +217,14 @@ section.mainPage .imageWrap #element_8 {
   background-repeat: no-repeat;
 }
 
-section.subPage {
+section.subPage.day {
   background: #0C2F4D;
+  height: 80vh;
+  width: 100%;
+}
+
+section.subPage.night {
+  background: #44009D;
   height: 80vh;
   width: 100%;
 }
