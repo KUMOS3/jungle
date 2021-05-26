@@ -19,7 +19,7 @@ export default new Vuex.Store({
     // 팝업창을 띄울 movie
     selectedMovie: null,
     // 회원가입 여부
-    signupState: false,
+    signupState: 'none',
     // 프로필에 사용될 사용자 정보
     userInfo: null,
     // 리뷰 전체 목록
@@ -74,6 +74,9 @@ export default new Vuex.Store({
     },
     NIGHT_ANIMATION: function (state) {
       state.imagetoggle = 3
+    },
+    CLOSE_ALERT: function (state) {
+      state.signupState = 'none'
     }
   },
   actions: {

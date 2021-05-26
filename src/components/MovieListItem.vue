@@ -19,7 +19,7 @@
           />
         </div>
 
-        <div class="card d-flex">
+        <div class="card d-flex" style="border:0px">
           <div class="row justify-content-center">
           <!-- 좋아요 기능 -->
             <div @click="likeMovie"  :class="{ 'border-primary': likeStatus }" class="col-5 card py-2 movie-btn" style="max-width: 20rem;">

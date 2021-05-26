@@ -20,7 +20,7 @@
             @call-like="likeReview"
             v-show="modalStatus"
             :review="review"
-            :likeStatus="likeStatus"
+            :likeStatus="likeStatus" 
             />
         </div>
           <!-- 좋아요 기능 -->
@@ -63,9 +63,13 @@ export default {
   methods: {
     showDetail: function () {
       this.modalStatus = true
+      document.documentElement.style.overflow = 'hidden';
+      document.body.scroll = "no";
     },
     closeDetail: function () {
       this.modalStatus = false
+      document.documentElement.style.overflow = 'scroll';
+      document.body.scroll = "yes";
     },
     
     getLike: function () {
@@ -128,7 +132,6 @@ export default {
   },
   created: function () {
     this.getLike()
-    this.getReviewMovie()
   }
 }
 </script>

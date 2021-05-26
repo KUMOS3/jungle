@@ -7,9 +7,9 @@
       <Interaction
         v-if="this.$store.state.imagetoggle"
       />
-    <nav class="sticky navbar navbar-expand-lg" :class="color">
+    <nav @click="CLOSE_ALERT" class="sticky navbar navbar-expand-lg" :class="color">
       <div class="container-fluid">
-        <router-link @click.native="NO_ANIMATION" class="nav-link active" style="font-size:X-large" to="/jungle">JUNGLE.</router-link>
+        <router-link @click.native="JUNGLE_ANIMATION" class="nav-link active" style="font-size:X-large" to="/jungle">JUNGLE.</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,7 +26,7 @@
               <router-link class="nav-link" to="/campfire">Campfire</router-link>
             </li>
             <li @click="NO_ANIMATION" v-if="this.$store.state.userToken" class="nav-item">
-              <router-link class="nav-link" to="/profile">My Page</router-link>
+              <router-link class="nav-link" to="/profile">MyPage</router-link>
             </li>
             <li @click="NO_ANIMATION" v-if="this.$store.state.userToken" class="nav-item">
               <router-link class="nav-link" @click.native="deleteJWT" to="#">Logout</router-link>
@@ -67,6 +67,29 @@ import { mapGetters } from 'vuex'
 import { mapMutations } from 'vuex'
 import Interaction from '@/components/Interaction'
 
+  // // 마우스 포인터
+  // let x = 0
+  // let y = 0
+  // let mx = 0
+  // let my = 0
+  // let speed = 0.1
+  // let cursorItem
+  // // 마우스 포인터
+  // window.addEventListener("mousemove", mouseFunc, false)
+  // function mouseFunc(e){
+  //   x = e.pageX
+  //   y = e.pageY
+  // }
+  // // 매끄럽게 따라오도록 loop사용
+  // loop();
+  // function loop() {
+  //   cursorItem = document.querySelector(".cursorItem");
+  //   mx += (x-mx) * speed;
+  //   my += (y-my) * speed;
+  //   // cursor_item의 스타일 중 좌표공간을 변경시키는 transform 속성에서 translate 을 변경시킴 (위치, 회전, 좌우반전)
+  //   cursorItem.style.transform = "translate("+mx+"px,"+my +"px) rotate(180deg) scaleX(-1)";
+  //   window.requestAnimationFrame(loop)
+  // }
 
 export default {
   name: 'App',
@@ -82,44 +105,9 @@ export default {
       'NO_ANIMATION',
       'JUNGLE_ANIMATION',
       'DAY_ANIMATION',
-      'NIGHT_ANIMATION'
+      'NIGHT_ANIMATION',
+      'CLOSE_ALERT'
     ]),
-    mouseItem: function () {
-      // 마우스 포인터
-      let x = 0
-      let y = 0
-      let mx = 0
-      let my = 0
-      let speed = 0.1
-      let cursorItem
-
-      // 마우스 포인터
-      window.addEventListener("mousemove", mouseFunc, false)
-
-      function mouseFunc(e){
-        x = e.clientX
-        y = e.clientY
-      }
-      // 매끄럽게 따라오도록 loop사용
-      loop();
-
-
-      function loop() {
-        cursorItem = document.querySelector(".cursorItem");
-        mx += (x-mx) * speed;
-        my += (y-my) * speed;
-        // cursor_item의 스타일 중 좌표공간을 변경시키는 transform 속성에서 translate 을 변경시킴 (위치, 회전, 좌우반전)
-        cursorItem.style.transform = "translate("+mx+"px,"+my +"px) rotate(180deg) scaleX(-1)";
-        window.requestAnimationFrame(loop)
-      }
-    }
-  },
-  created: function () {
-    // if (!this.$store.getters.decodedToken)
-    //   this.$router.push({name: 'Jungle'})
-    if (!this.$store.state.imagetoggle) {
-      this.mouseItem()
-    }
   },
   computed: {
     isDay () {
@@ -135,6 +123,9 @@ export default {
       } else {
         return false
       }
+    },
+    imageToggle () {
+      return this.$store.state.imagetoggle
     },
     ...mapGetters([
       'color'

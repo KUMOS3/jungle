@@ -2785,7 +2785,10 @@ textarea.form-control.is-invalid {
   font-size: 50px;
 }
 
-
+.black-text {
+  text-shadow: none;
+  color: #3a0188;
+}
 
 
 
@@ -2817,6 +2820,7 @@ textarea.form-control.is-invalid {
 }
 .btn:hover {
   color: #FFF;
+
 }
 .btn-check:focus + .btn,
 .btn:focus {
@@ -4319,7 +4323,8 @@ fieldset:disabled .btn {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 2px solid rgba(0, 0, 0, 0.125);
+  /* keyword - 반짝이게 하려면 */
+  /* border: 2px solid rgba(0, 0, 0, 0.125);  */
   border-radius: 0.15rem;
 }
 .card > hr {

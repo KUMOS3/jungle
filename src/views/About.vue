@@ -1,8 +1,7 @@
 <template>
-  <div class="about">
+  <div class="about my-5">
     <div class="d-flex justify-content-center align-items-center">
-
-      <div class="col-8 mt-2" style="text-align:left">
+      <div class="col-8" style="text-align:left">
         <!-- 인용구 -->
         <figure class="text-center py-5 my-5">
           <blockquote class="blockquote">
@@ -24,20 +23,49 @@
           </figcaption>
         </figure>
 
-        <h5 id="D2" class="my-5">Welcome
-          <span class="fa-lg spin" style="color: #2F959A"><font-awesome-icon class="big-icon" :icon="['fab', 'pagelines']" spin/></span>
-        </h5>
-        <h1 @click="clickIcon">This is an about Jungle, <br> and Movie.
-          <span v-if="iconStatus == 1"><font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#fd7e14" /></span>
-          <span v-if="iconStatus == 2"><font-awesome-icon :icon="['fas', 'tint']" class="big-icon" style="color:#4c6ef5" /></span>
-          <span v-if="iconStatus == 3"><font-awesome-icon :icon="['fas', 'gem']" class="big-icon" style="color:#be4bdb" /></span>
-        </h1>
-        <div class="d-grid gap-2 my-5">
-          <button class="btn btn-lg btn-light mt-5" type="button">
-            <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
-          </button>
+        <div class="border-light p-3 mt-5 text-center">
+          <h5 id="D2">Welcome
+            <span class="fa-lg spin" style="color: #2F959A"><font-awesome-icon class="big-icon" :icon="['fab', 'pagelines']" spin/></span>
+          </h5>
+          <h1 class="py-5" @click="clickIcon">This is an about Jungle, <br> and Movie. <br><hr>
+            <span v-if="iconStatus == 1"><font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#fd7e14; font-size:100px;" /></span>
+            <span v-if="iconStatus == 2"><font-awesome-icon :icon="['fas', 'tint']" class="big-icon" style="color:#4c6ef5; font-size:100px;" /></span>
+            <span v-if="iconStatus == 3"><font-awesome-icon :icon="['fas', 'gem']" class="big-icon" style="color:#be4bdb; font-size:100px;" /></span>
+            <p class="text-muted" style="font-size:15px">
+              <small>click me!</small>
+            </p>
+          </h1>
         </div>
-        <p class="text-light">Don't have an JUNGLE ID? Create one now</p>
+
+        <div class="border-light p-3 my-5 text-center">
+          <h2 id="D2" @click="clickIcon" class="my-5"> You Can<strong>build a FIRE
+            <span><font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#fd7e14" /></span>
+            <br></strong> by meaning of Agree or any reaction,
+            <br>or you can also <strong>throw a wet blanket</strong>
+            <span class="ms-2"><font-awesome-icon :icon="['fas', 'tint']" class="big-icon" style="color:#4c6ef5" /></span>
+            <br>on a Movie or Review that you dislike.
+            <hr>
+            If you meet a good Movie or Review,
+            <span><font-awesome-icon :icon="['fas', 'gem']" class="big-icon" style="color:#be4bdb" /></span>
+            <br> Keep it on your <strong>WISH list</strong> like it is your gem.
+          </h2>
+        </div>
+
+        <div class="border-light px-3 pt-3 pb-5 my-5 text-center">
+          <h1 class="my-5">
+            Then, Let's be a JUNGLER!
+            <span class="fa-lg spin" style="color: #2F959A"><font-awesome-icon class="big-icon" :icon="['fab', 'pagelines']" spin/></span>
+          </h1>
+          <div class="my-5">
+            <button class="btn btn-lg btn-light" type="button">
+              <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
+            </button>
+          </div>
+          <div class="d-flex justify-content-center pb-5">
+            <div id="D2" class="pt-2">Don't have an JUNGLE ID?</div>
+            <div><router-link class="nav-link" :to="{ name: 'Signup'}">Create one now</router-link></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -69,6 +97,11 @@ export default {
   created: function () {
     this.CHANGE_COLOR('day')
     document.body.style.backgroundImage = "linear-gradient( #0C2F4D 80%,  #092742 100% )"
+  },
+  mounted () {
+    window.scrollTo(0, 0)
+    document.documentElement.style.overflowY = 'scroll';
+    document.body.scroll = "yes";
   }
 }
 </script>
