@@ -147,6 +147,14 @@ export default {
           })
       }
     },
+    // // like한 후 비동기적으로 user
+    // getLikeUserinfo: function (this.userid) {
+    //   var _this = this
+    //   return new Promise(function (resolve) {
+    //     _this.$store.dispatch('getUserInfo', this.userid)
+    //     resolve()
+    //   })
+
     likeMovie: function () {
       if (this.$store.state.userToken) {
         axios({
@@ -164,7 +172,7 @@ export default {
             this.likeStatus = !this.likeStatus
               this.userid = this.$store.getters.decodedToken.user_id
               this.$store.dispatch('getUserInfo', this.userid)
-              this.$emit('achieve')
+              // this.$emit('achieve')
           })
           .catch((err) => {
             console.log(err)
@@ -189,13 +197,13 @@ export default {
             this.dislikeStatus = !this.dislikeStatus
               this.userid = this.$store.getters.decodedToken.user_id
               this.$store.dispatch('getUserInfo', this.userid)
-              this.$emit('achieve')
           })
           .catch((err) => {
             console.log(err)
           })
       }
     },
+
     wishMovie: function () {
       if (this.$store.state.userToken) {
         axios({
@@ -210,7 +218,6 @@ export default {
             this.wishStatus = !this.wishStatus
               this.userid = this.$store.getters.decodedToken.user_id
               this.$store.dispatch('getUserInfo', this.userid)
-              this.$emit('achieve')
           })
           .catch((err) => {
             console.log(err)

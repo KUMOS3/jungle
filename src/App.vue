@@ -115,8 +115,8 @@ export default {
     }
   },
   created: function () {
-    if (!this.$store.getters.decodedToken)
-      this.$router.push({name: 'Jungle'})
+    // if (!this.$store.getters.decodedToken)
+    //   this.$router.push({name: 'Jungle'})
     if (!this.$store.state.imagetoggle) {
       this.mouseItem()
     }
