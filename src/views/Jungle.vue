@@ -10,15 +10,7 @@
       <img src="@/assets/jungle_animation/layer6.png" class="move-in-6" id="layer6">
       <img src="@/assets/jungle_animation/layer7.png" class="move-in-7" id="layer7">
       <img src="@/assets/jungle_animation/layer8.png" class="move-in-8" id="layer8">
-      <a href="/login">
-        <img 
-          src="@/assets/jungle_animation/logo_toodark.png"
-          class="move-in-9" id="layer9"
-        >
-          <!-- onmouseover="this.src='@/assets/jungle_animation/logo_day.png'"
-          onmouseout="this.src='@/assets/jungle_animation/logo_toodark.png'" -->
-      </a>
-      <img src="@/assets/jungle_animation/layer1.png" id="layer10">
+      <a href="/"><img src="@/assets/jungle_animation/logo.png" class="move-in-9" id="layer9"></a>
     </div>
   </section>
     <h1>A</h1>
@@ -39,65 +31,59 @@ export default {
   }
   .move-in-1 {
     animation-name: move-in-1;
-    animation-duration: 1.2s;
+    animation-duration: 1.7s;
     animation-fill-mode: forwards;
-    animation-delay: 0.2s;
+    animation-delay: 1s;
     animation-timing-function: cubic-bezier(.82,0,.26,1);
     /* animation-play-state: paused; */
     height: 50vh;
   }
   .move-in-2 {
-    animation: move-in-1 1.2s forwards;
+    animation: move-in-1 1.9s forwards;
     animation-fill-mode: forwards;
-    animation-delay: 0.2s;
+    animation-delay: 1.2s;
     animation-timing-function: cubic-bezier(.82,0,.26,1);
     /* animation-play-state: paused; */
   }
   .move-in-3 {
-    animation: move-in-1 1.2s forwards;
+    animation: move-in-1 1.9s forwards;
     animation-fill-mode: forwards;
-    animation-delay: 0.2s;
+    animation-delay: 1.3s;
     animation-timing-function: cubic-bezier(.82,0,.26,1);
     /* animation-play-state: paused; */
   }
   .move-in-4 {
-    animation: move-in-1 1.7s forwards;
+    animation: move-in-1 2.2s forwards;
     animation-fill-mode: forwards;
-    animation-delay: 0.2s;
+    animation-delay: 1.3s;
     animation-timing-function: cubic-bezier(.82,0,.26,1);
     /* animation-play-state: paused; */
   }
   .move-in-5 {
-    animation: move-in-1 2.2s forwards;
+    animation: move-in-1 2.5s forwards;
     animation-fill-mode: forwards;
-    animation-delay: 0.2s;
+    animation-delay: 1.3s;
     animation-timing-function: cubic-bezier(.82,0,.26,1);
     /* animation-play-state: paused; */
   }
   .move-in-6 {
-    animation: move-in-1 2.7s forwards;
+    animation: move-in-1 3s forwards;
     animation-fill-mode: forwards;
-    animation-delay: 0.2s;
-    animation-timing-function: cubic-bezier(.82,0,.26,1);
+    animation-delay: 0s;
+    animation-timing-function: cubic-bezier(.82,0,.91,.29);
     /* animation-play-state: paused; */
   }
   .move-in-7 {
-    animation: move-in-1 3.2s forwards;
+    animation: move-in-1 3.1s forwards;
     animation-fill-mode: forwards;
-    animation-delay: 0.2s;
-    animation-timing-function: cubic-bezier(.82,0,.26,1);
+    animation-delay: 0s;
+    animation-timing-function: cubic-bezier(.82,0,.91,.29);
     /* animation-play-state: paused; */
   }
-  /* .move-in-8 {
-    animation: move-in-1 4s forwards;
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(.82,0,.26,1);
-    animation-play-state: paused;
-  } */
   .move-in-9 {
-    animation: move-in-9 1.5s forwards;
+    animation: move-in-9 1s forwards;
     animation-fill-mode: forwards;
-    animation-delay: 2s;
+    animation-delay: 2.9s;
     animation-timing-function: cubic-bezier(.84,0,.31,.99);
     /* animation-play-state: paused; */
   }
@@ -159,32 +145,18 @@ export default {
       transform: perspective(500px) translate3d(0px, 0px, 300px);
     }
   }
-  /* @keyframes move-in-8 {
-    0% {
-      transform: translate3d(0px, 0px, 0px);
-    }
-    100% {
-      transform: perspective(500px) translate3d(0px, 0px, 300px);
-    }
-  }  */
   @keyframes move-in-9 {
     0% {
-      transform: translate3d(0px, -500vh, 0px);
+      transform: translate(45vh, 120vh) rotateX(90deg);
     }
-    40% {
-      transform: translate3d(0px, 160vh, 0px)
-    }
-    /* 20% {
-      transform: translate3d(20vh, 160vh, 0px)
-    }
-    30% {
-      transform: translate3d(0px, 160vh, 0px)
-    } */
     60% {
-      transform: translate3d(60vw, 100vh, 0px) rotate(60deg)
+      transform: translate(45vh, 120vh) scaleY(1.4); 
+    }
+    80% {
+      transform: translate(45vh, 120vh);
     }
     100% {
-      transform: translate3d(45vh, 120vh, 0px);
+      transform: translate(45vh, 120vh);
     }
   } 
 
@@ -192,7 +164,7 @@ export default {
     position: absolute;
     top: -10vh;
     left: 0px;
-    height: 100vh;
+    height: 102vh;
     width: 100vw;
     z-index: 80;
   }
@@ -254,10 +226,8 @@ export default {
   }
   #layer9 {
     position: absolute;
-    top: -100vh;
-    left: 3vw;
-    height: 40vh;
-    width: 50vw;
+    top: -113vh;
+    left: -2vw;
     z-index: 15;
   }
   /* #layer10 {

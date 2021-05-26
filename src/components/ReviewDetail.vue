@@ -1,34 +1,22 @@
 <template>
-  <div class="p-2">
+  <div class="p-2" id="close">
     <!-- Modal -->
     <div class="modal show" style="display:block" tabindex="1">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title fs-2">{{ review.title }}</h5>
+          <div class="modal-header d-flex justify-content-between">
+            <h5 class="modal-title fs-2">{{ review.movie.title }}</h5>
             <button @click="closeDetail" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-          <!-- modal card -->
-          <div class="card mb-3" style="width:fit-content">
-            <div class="row g-0">
-              <div class="col-md-3">
-              <!-- <img :src="moviePosterURL" style="width: 8vw"> -->
-              </div>
-              <div class="col-md-9">
-                <div class="card-body">
-                  <h2 class="mb-3">{{ this.review.movie.title }}</h2>
-                  <h5>Begin part sometimes during music body future. Game as commercial though early</h5>
-                  <p class="card-text"><small class="text-muted text-end">Release date: { movieReleaseDate}</small></p>
-                </div>
-              </div>
-            </div>
+
+            <h2 class="mb-3 fs-2"></h2>
+            <h5>user: {{ review.user }}</h5><h5 class="text-muted">My Rate: {{ review.movie_rate }}.0</h5>
+
+          <div class="d-flex justify-content-between mt-5 mb-2">
+            <h2 class="mb-3 fs-2">{{ review.title }}</h2> 
           </div>
-          <div class="d-flex justify-content-between mt-5">
-            <h2 class="mb-3">Review Content</h2> 
-            <h4>user: {{ review.user }}</h4>
-          </div>
-          <h4 class="mb-4">{{ review.content }} commentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.content</h4>
+          <h4 class="mb-3">{{ review.content }} commentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.content</h4>
           
           <div class="d-flex justify-content-between">
             <!-- like -->
@@ -79,7 +67,8 @@ export default {
         content: '',
         user: this.$store.getters.decodedToken.user_id,
       },
-      comments: this.review.comments
+      comments: this.review.comments,
+      modalHold: false,
     }
   },
   props: {
@@ -130,6 +119,11 @@ export default {
           console.log(err)
         })
     },
+    // holdScroll: function () {
+    //   if (modalHold == true) {
+    //     let modal = document.getElementById('close')
+    //   }
+    // },
   },
   // created: {
 
@@ -171,5 +165,8 @@ export default {
   .modal {
     margin-top: 5vh;
     text-align: start;
+  }
+  #close {
+    pointer-events: none;
   }
 </style>
