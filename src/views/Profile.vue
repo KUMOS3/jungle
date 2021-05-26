@@ -20,8 +20,6 @@
         <UserInfo/>
       </div>
       <div class="tab-pane fade" id="Achievement">
-        <!-- <h1 class="fs-1">A</h1>
-        <h1 class="fs-1 mb-5">A</h1> -->
         <div style="height: 20vh;"></div>
         <Achievement/>
       </div>  
@@ -50,7 +48,7 @@ export default {
     goAchievement: function () {
       this.showAchievement = !this.showAchievement
     },
-    ...mapMutations([
+     ...mapMutations([
       'CHANGE_COLOR'
     ])
   },
