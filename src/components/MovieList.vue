@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="width: 70%;">
+  <div class="container" style="width: 60%;">
     {{this.$store.state.userInfo}}
   <div class="home d-flex justify-content-around">
     <div v-if="this.$store.state.userToken" class="row">
@@ -37,7 +37,6 @@ export default {
       showingMovies: [],
       movieCount: 10,
       previeousCount: 10,
-      busy: false,
       isAchieved: {
         "1": false,
         "2": false,
@@ -57,26 +56,14 @@ export default {
       document.addEventListener('scroll', () => {
         // key를 각각 적으면 value값을 넣어주는 문법
         const {scrollTop, clientHeight, scrollHeight} = document.documentElement
-        // console.log(clientHeight, scrollHeight-scrollTop)
         if (scrollHeight - scrollTop <= clientHeight + 400) {
-          console.log('바닥')
-        }
-
-        if (scrollHeight - scrollTop <= clientHeight + 400 && this.busy) {
           this.getMoreMovie()
         }
-        if (this.previeousCount + 10 <= this.movieCount) {
-          this.busy = false
-        }
       })
-      document.addEventListener('scroll', 
-          this.$_.throttle(this.getMoreMovie(),15))
     },
     getMoreMovie: function () {
-      this.busy = true
-      this.showingMovies = this.$store.state.movies.slice(this.movieCount,this.movieCount+10)
+      this.showingMovies = this.$store.state.movies.slice(0,this.movieCount+10)
       this.movieCount += 10
-      console.log('영화가져옴')
     },
     achieve: function () {
       this.userid = this.$store.getters.decodedToken.user_id

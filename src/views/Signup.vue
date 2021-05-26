@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="my-5">Signup</h1>
+    <h1 class="my-4">Signup</h1>
     <div class="row">
       <div class="col-12 col-lg-6">
         <fieldset class="col-sm-8 col-md-6 col-lg-11 offset-sm-2 offset-md-3 offset-lg-1">

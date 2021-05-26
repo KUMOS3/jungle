@@ -9,7 +9,7 @@
       />
     <nav class="sticky navbar navbar-expand-lg" :class="color">
       <div class="container-fluid">
-        <router-link @click.native="JUNGLE_ANIMATION" class="nav-link active" style="font-size:X-large" to="/jungle">JUNGLE.</router-link>
+        <router-link @click.native="NO_ANIMATION" class="nav-link active" style="font-size:X-large" to="/jungle">JUNGLE.</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,7 +26,7 @@
               <router-link class="nav-link" to="/campfire">Campfire</router-link>
             </li>
             <li @click="NO_ANIMATION" v-if="this.$store.state.userToken" class="nav-item">
-              <router-link class="nav-link" to="/profile">| My Page</router-link>
+              <router-link class="nav-link" to="/profile">My Page</router-link>
             </li>
             <li @click="NO_ANIMATION" v-if="this.$store.state.userToken" class="nav-item">
               <router-link class="nav-link" @click.native="deleteJWT" to="#">Logout</router-link>
@@ -115,8 +115,8 @@ export default {
     }
   },
   created: function () {
-    if (!this.$store.getters.decodedToken)
-      this.$router.push({name: 'Jungle'})
+    // if (!this.$store.getters.decodedToken)
+    //   this.$router.push({name: 'Jungle'})
     if (!this.$store.state.imagetoggle) {
       this.mouseItem()
     }

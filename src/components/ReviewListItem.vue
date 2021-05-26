@@ -2,10 +2,10 @@
   <div class="mb-3 col-xs-12 col-sm-6 col-lg-4 px-4 my-5">
 
     <div class="card border-light" style="height: 500px">
-      <div @click="showDetail" class="card-header">Movie Title</div>
+      <div @click="showDetail" class="card-header">{{ this.review.movie.title }}</div>
       <div class="card-body px-3">
         <div class="detail-parent text-border-light p-3 m-3" style="height: 300px">
-          <h4 @click="showDetail" class= "card-title mb-4">{{ reviewTitle }}</h4>
+          <h4 @click="showDetail" class= "card-title mb-4">{{ this.review.title }}</h4>
           <p @click="showDetail" class="card-text text-start">{{ this.review.content | substring }}</p>
           <div class="like-and-comment">
             <span @click="showDetail" class="fa-lg me-2"><font-awesome-icon :icon="['fas', 'comment']" style="color:#dbdad9" /></span>
@@ -124,7 +124,7 @@ export default {
     },
     commentsCount: function () {
       return this.review.comments.length
-    }
+    },
   },
   created: function () {
     this.getLike()

@@ -1,7 +1,6 @@
 <template>
-  <section class="bg">
-    <div class="center">
-      <img src="@/assets/jungle_animation/layer1.png" class="move-in-1" id="layer1">
+    <div>
+      <!-- <img src="@/assets/jungle_animation/layer1.png" class="move-in-1" id="layer1">
       <img src="@/assets/jungle_animation/layer2.png" class="move-in-2" id="layer2">
       <img src="@/assets/jungle_animation/layer3.png" class="move-in-3" id="layer3">
       <img src="@/assets/jungle_animation/layer4.png" class="move-in-4" id="layer4">
@@ -9,10 +8,8 @@
       <img src="@/assets/jungle_animation/layer6.png" class="move-in-6" id="layer6">
       <img src="@/assets/jungle_animation/layer7.png" class="move-in-7" id="layer7">
       <img src="@/assets/jungle_animation/layer8.png" class="move-in-8" id="layer8">
-      <img src="@/assets/jungle_animation/logo_toodark.png" class="move-in-9" id="layer9">
+      <img src="@/assets/jungle_animation/logo_toodark.png" class="move-in-9" id="layer9"> -->
     </div>
-  </section>
-  
 </template>
 
 <script>
