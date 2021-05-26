@@ -34,7 +34,7 @@
                   {{ movie.title }}
                 </option>
               </select>
-              <button class="shine-list btn-primary row mt-3 mb-1 mx-auto">GO</button>
+              <button class="shine-list btn-primary row mt-3 mb-1 mx-auto" @click="goMovieDetail">GO</button>
             </div>
             <div class="col collect-list">
               <div class="my-3 d-flex justify-content-between">
@@ -48,7 +48,7 @@
                   {{ movie.title }}
                 </option>
               </select>
-              <button class="shine-list btn-primary row mt-3 mb-1 mx-auto">GO</button>
+              <button class="shine-list btn-primary row mt-3 mb-1 mx-auto" @click="goMovieDetail">GO</button>
             </div>
             <div class="col collect-list">
               <div class="my-3 d-flex justify-content-between">
@@ -62,13 +62,11 @@
                   {{ movie.title }}
                 </option>
               </select>
-              <button class="shine-list btn-primary row mt-3 mb-1 mx-auto">GO</button>
+              <button class="shine-list btn-primary row mt-3 mb-1 mx-auto" @click="goMovieDetail">GO</button>
             </div>
           </div>
           </div>
-
-
-          {{ this.$store.state.userInfo }}
+          {{ this.$store.state.userInfo.like_movies }}
         </div>
 
 
@@ -86,6 +84,9 @@ export default {
     getUserInfo: function () {
       this.userid = this.$store.getters.decodedToken.user_id
       this.$store.dispatch('getUserInfo', this.userid)
+    },
+    goMovieDetail: function () {
+      this.$router.push({name: 'Home'})
     },
     ...mapMutations([
       'CHANGE_COLOR'

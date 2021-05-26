@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2">
+  <div class="p-2" id="close">
     <!-- Modal -->
     <div class="modal show" style="display:block" tabindex="1">
       <div class="modal-dialog modal-lg">
@@ -29,8 +29,7 @@
             <h2 class="mb-3">{{ review.title }}</h2> 
             <h2>user: {{this.review.user.nickname}}</h2>
           </div>
-          <p class="mb-4">{{ review.content }} commentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.content</p>
-          
+          <p class="mb-4">{{ review.content }} commentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.content</p>    
           <div class="justify-content-between">
           <div @click="callLike" 
             :class="{ 'border-primary': likeStatus }" class="review-like-btn col-1 card py-2" 
@@ -85,7 +84,8 @@ export default {
         content: '',
         user: this.$store.getters.decodedToken.user_id,
       },
-      comments: this.review.comments
+      comments: this.review.comments,
+      modalHold: false,
     }
   },
   props: {
@@ -136,6 +136,11 @@ export default {
           console.log(err)
         })
     },
+    // holdScroll: function () {
+    //   if (modalHold == true) {
+    //     let modal = document.getElementById('close')
+    //   }
+    // },
   },
   // created: {
 
