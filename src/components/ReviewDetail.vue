@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2">
+  <div class="p-2" id="close">
     <!-- Modal -->
     <div class="modal show" style="display:block" tabindex="1">
       <div class="modal-dialog modal-lg">
@@ -85,7 +85,8 @@ export default {
         content: '',
         user: this.$store.getters.decodedToken.user_id,
       },
-      comments: this.review.comments
+      comments: this.review.comments,
+      modalHold: false,
     }
   },
   props: {
@@ -136,6 +137,11 @@ export default {
           console.log(err)
         })
     },
+    // holdScroll: function () {
+    //   if (modalHold == true) {
+    //     let modal = document.getElementById('close')
+    //   }
+    // },
   },
   // created: {
 

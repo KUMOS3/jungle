@@ -2,16 +2,16 @@
   <div>
     <!-- Modal -->
     <div class="modal show" style="display:block" tabindex="1">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">title= {{ movie.title }}</h5>
+            <p class="fs-2">{{ movie.title }}</p>
             <button @click="closeDetail" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <p>{{ movie }}</p>
-            <p>movie_genres= {{ movieGenres }}</p>
-            <iframe v-if="previewURL" :src="previewURL" frameborder="0"></iframe>
+            <p>Genre {{ movieGenres }}</p>
+            <iframe v-if="previewURL" :src="previewURL" frameborder="0" width="100%" height="500px"></iframe>
             <p>overview= {{ movie.overview }}</p>
             <p>overview= {{ movie.overview }}</p>
             <p>release_date= {{ movie.release_date }}</p>
@@ -96,6 +96,7 @@ export default {
       let genrelist = []
       for (var genre in this.movie.genres) {
         genrelist.push(this.movie.genres[genre].name)
+
       }
       return genrelist
     },

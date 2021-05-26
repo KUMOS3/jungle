@@ -16,6 +16,7 @@
     </div>
 
     <!-- <h1>JUNGLE</h1>     -->
+
     <div class="d-flex flex-column justify-content-center aligm-items-center form-group col-sm-8 col-md-6 col-lg-4 offset-md-2 offset-md-3 offset-lg-4">
       <label class="form-label mt-4 mb-5"><h1>Login</h1></label>
       <div class="form-floating mb-3">
