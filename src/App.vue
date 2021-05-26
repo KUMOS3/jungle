@@ -2,7 +2,7 @@
   <div id="app" :class="{backgroundday : isDay, backgroundnight : isNight}">
 
     <!-- cursor Item -->
-    <span class="cursorItem fa-lg" style="color: #2F959A"><font-awesome-icon :icon="['fab', 'pagelines']" /></span>
+    <span v-if="!this.$store.state.imagetoggle" class="cursorItem fa-lg" style="color: #2F959A"><font-awesome-icon :icon="['fab', 'pagelines']" /></span>
 
       <Interaction
         v-if="this.$store.state.imagetoggle"

@@ -4,6 +4,7 @@
       {{ this.$store.state.userInfo.nickname }}'s Titles'
       <span class="fa-lg spin" style="color: #2F959A"><font-awesome-icon class="big-icon" :icon="['fab', 'pagelines']" spin/></span>
     </h1>
+
   </div>
 </template>
 
