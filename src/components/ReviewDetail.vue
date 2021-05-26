@@ -13,13 +13,13 @@
           <div class="card mb-3" style="width:fit-content">
             <div class="row g-0">
               <div class="col-md-3">
-              <img :src="moviePosterURL" style="width: 8vw">
+              <!-- <img :src="moviePosterURL" style="width: 8vw"> -->
               </div>
               <div class="col-md-9">
                 <div class="card-body">
-                  <h2 class="mb-3">{{ movieTitle }}</h2>
+                  <h2 class="mb-3">{{ this.review.movie.title }}</h2>
                   <h5>Begin part sometimes during music body future. Game as commercial though early</h5>
-                  <p class="card-text"><small class="text-muted text-end">Release date: {{ movieReleaseDate }}</small></p>
+                  <p class="card-text"><small class="text-muted text-end">Release date: { movieReleaseDate}</small></p>
                 </div>
               </div>
             </div>
@@ -84,6 +84,7 @@ export default {
   },
   props: {
     review: Object,
+    movie: Object,
     likeStatus: Boolean,
   },
   methods: {
@@ -138,19 +139,31 @@ export default {
       return this.review.comments.length
     },
     moviePosterURL: function () {
-      return `https://image.tmdb.org/t/p/w500/${this.$store.state.movies[0].poster_path}`
+      return `https://image.tmdb.org/t/p/w500/${this.$store.state.movie.poster_path}`
     },
     movieReleaseDate: function () {
-      return this.$store.state.movies[0].release_date
+      let movieReleaseDate = ''
+      for (var date in this.$store.state.movies) {
+        if (this.$store.state.movies[date].id == this.review.movie) {
+          movieReleaseDate += this.$store.state.movies[date].release_date
+        }
+      }
+      return movieReleaseDate
     },
     movieTitle: function () {
-      return this.$store.state.movies[0].title
+      let movieItem = ''
+      for (var movie in this.$store.state.movies) {
+        if (this.$store.state.movies[movie].id == this.review.movie) {
+          movieItem += this.$store.state.movies[movie].title
+        }
+      }
+      return movieItem
     },
     getTime: function () {
       const time = this.review.created_at.slice(0, 16).split('T')
       return time[0] + ' ' + time[1]
     }
-  }
+  },
 }
 </script>
 
