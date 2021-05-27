@@ -9,13 +9,13 @@
           </div>
           <div class="modal-body">
           <!-- modal card -->
-          <div class="card mb-3">
+          <div class="card mb-3 d-flex">
             <div class="row g-0">
-              <div class="col-md-3">
-              <img :src="moviePosterURL" style="width: 8vw">
+              <div class="col-md-3 offset-1">
+              <img :src="moviePosterURL" style="width: 13vw">
               <!-- {{ moviePosterURL }} -->
               </div>
-              <div class="col-md-12">
+              <div class="col-md-5">
                 <div class="card-body">
                   <!-- <p>{{this.review.user}}</p> -->
                   <h2 class="mb-3">{{ this.review.movie.original_title }}</h2>
@@ -25,38 +25,48 @@
               </div>
             </div>
           </div>
-          <div class="d-flex justify-content-between mt-5">
+          <div class="d-flex justify-content-between mx-5 mt-5">
             <h2 class="mb-3">{{ review.title }}</h2> 
             <h2>user: {{this.review.user.nickname}}</h2>
           </div>
-          <p class="mb-4">{{ review.content }} commentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.content</p>    
-          <div class="justify-content-between">
-          <div @click="callLike" 
-            :class="{ 'border-primary': likeStatus }" class="review-like-btn col-1 card py-2" 
-            style="max-width: 20rem;"
-          >
-            <div v-if="likeStatus" class="mx-auto">
-              <font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#fd7e14" />
+          <p class="mb-4 mx-4">{{ review.content }}</p>    
+          <h6 class="card-subtitle text-muted text-end"><small class="text-muted">Created at {{ getTime }}</small></h6>          
+
+
+          <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-between">
+              <div>
+                <div @click="callLike" 
+                  :class="{ 'border-primary': likeStatus }" class="review-like-btn card py-2" 
+                  style="max-width: 20rem;"
+                >
+                  <div v-if="likeStatus" class="mx-auto">
+                    <font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#fd7e14" />
+                  </div>
+                  <div v-else class="mx-auto">
+                    <div><font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#dbdad9" /></div>
+                  </div>
+                </div>
+                <h6 class="card-subtitle text-muted my-2"><small>Whether you like <br> or dislike this REVIEW, <br> kindle it!</small></h6>
+              </div>
             </div>
-            <div v-else class="mx-auto">
-              <div><font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#dbdad9" /></div>
             </div>
-          </div>
-          <h6 class="card-subtitle text-muted"><small>Whether you like or dislike this REVIEW, kindle it!</small></h6>
-          <h6 class="card-subtitle text-muted"><small class="text-muted">Created at {{ getTime }}</small></h6>          
-          </div>
+
+
           <!-- 댓글 -->
-          <div class="d-flex justify-content-between mt-5">
+          <div class="d-flex justify-content-between mt-5 mx-4">
             <h3>Comments</h3>
             <h5 v-if="this.review.comments">{{ CommentsCount }} comments</h5>
             <h5 v-else>There is no comments</h5>
           </div>
-          <div class="input-group mb-5 mt-3">
+          <div class="input-group mb-5 mx-4">
             <input type="text" class="form-control" v-model="commentInfo.content" @keyup.enter="createComment" placeholder="How do you feel? :)" aria-describedby="button-addon2">
-            <button class="btn btn-light" type="button" id="button-addon2" @keyup.enter="createComment" @click="createComment">Submit</button>
+            <button class="btn btn-light me-5" type="button" id="button-addon2" @keyup.enter="createComment" @click="createComment">Submit</button>
           </div>
+
           <div v-for="(comment, id) in review.comments" :key=id>
-            <p class="me-3 mt-3 btn-light p-1 rounded text-center" style="width: 8vw">user: {{ comment.id }}</p><h5> {{ comment.content }}</h5>
+            <span class="ms-4 mt-3 btn-light p-1 rounded text-center" style="width: 8vw">user: {{ comment.id }}</span>
+            <span class="mx-4 mt-3"> {{ comment.content }}</span>
           </div>
           </div>
           <div class="modal-footer mb-5">

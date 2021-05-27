@@ -67,7 +67,7 @@ import { mapGetters } from 'vuex'
 import { mapMutations } from 'vuex'
 import Interaction from '@/components/Interaction'
 
-  // // 마우스 포인터
+  // 마우스 포인터
   // let x = 0
   // let y = 0
   // let mx = 0

@@ -1,9 +1,7 @@
 <template>
   <div class="container" style="width: 70%;">
-    <div v-if="test">
-      check
-    </div>
-    {{this.$store.state.userInfo}}
+
+
   <div class="home d-flex justify-content-around">
     <div v-if="this.$store.state.userToken" class="row">
       <MovieListItem
@@ -14,18 +12,19 @@
       <!-- @achieve="achieve" -->
     </div>
   </div>
+   {{this.$store.state.userInfo}}
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import {mapGetters} from 'vuex'
-import axios from 'axios'
+// import axios from 'axios'
 import MovieListItem from '@/components/MovieListItem'
 import _ from 'lodash'
 import Vue from 'vue'
 
-const SERVER_URL = process.env.VUE_APP_SERVER_URL
+// const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 Vue.prototype.$_ = _
 
@@ -39,13 +38,7 @@ export default {
     return {
       showingMovies: [],
       movieCount: 10,
-      previeousCount: 10,
-      isAchieved: {
-        "1": false,
-        "2": false,
-        "3": false,
-      },
-      test: false
+      previeousCount: 10,      
     }
   },
   methods: {
@@ -87,39 +80,38 @@ export default {
       'movies',
     ])
   },
-  watch: {
-    userinfoLike: function () {
-      this.userid = this.$store.getters.decodedToken.user_id
-      let achievementid = null
+  // watch: {
+  //   userinfoLike: function () {
+  //     this.userid = this.$store.getters.decodedToken.user_id
+  //     let achievementid = null
 
-      if (this.isAchieved['1'] == false && this.$store.state.userInfo.like_movies.length == 1) {
-        achievementid=1
-      } else if (this.isAchieved['2'] == false && this.$store.state.userInfo.dislike_movies.length == 1) {
-        achievementid=2
-      } else if (this.isAchieved['3'] == false && this.$store.state.userInfo.wish_movies.length == 1) {
-        achievementid=3
-      }
-      if (this.isAchieved[`${achievementid}`] == false) {
-        axios({
-          method: 'post',
-          url: `${SERVER_URL}/accounts/${achievementid}/achievement/`,
-          data: this.userid,
-          headers: {
-            Authorization: `JWT ${this.$store.state.userToken}`
-          }
-        })
-          .then((res) => {
-            this.isAchieved[`${res.data.id}`] = true
-            console.log('성공')
-            this.test = true
-            // alert(`축하합니다. <${res.data.name}>칭호를 획득하셨습니다!`)
-            this.$store.dispatch('getUserInfo', this.userid)
-          }) 
-          .catch((err) => {
-            console.log(err)
-          })
-      }
-    }
-  }
+  //     if (this.isAchieved['1'] == false && this.$store.state.userInfo.like_movies.length == 1) {
+  //       achievementid=1
+  //     } else if (this.isAchieved['2'] == false && this.$store.state.userInfo.dislike_movies.length == 1) {
+  //       achievementid=2
+  //     } else if (this.isAchieved['3'] == false && this.$store.state.userInfo.wish_movies.length == 1) {
+  //       achievementid=3
+  //     }
+  //     if (this.isAchieved[`${achievementid}`] == false) {
+  //       axios({
+  //         method: 'post',
+  //         url: `${SERVER_URL}/accounts/${achievementid}/achievement/`,
+  //         data: this.userid,
+  //         headers: {
+  //           Authorization: `JWT ${this.$store.state.userToken}`
+  //         }
+  //       })
+  //         .then((res) => {
+  //           this.acheNow = `${res.data.id}`
+  //           this.isAchieved[`${res.data.id}`] = true
+  //           // alert(`축하합니다. <${res.data.name}>칭호를 획득하셨습니다!`)
+  //           this.$store.dispatch('getUserInfo', this.userid)
+  //         }) 
+  //         .catch((err) => {
+  //           console.log(err)
+  //         })
+  //     }
+  //   }
+  // }
 }
 </script>

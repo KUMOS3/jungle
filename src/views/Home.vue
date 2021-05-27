@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h5 id="D2" v-if="this.$store.state.userToken" class="my-5">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</h5>
-    <div v-else class="d-flex justify-content-center align-items-center">
+    <div v-if="this.$store.state.userToken">
+      <h5 id="D2"  class="my-5">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</h5>
+    </div>
+    <div v-else class="d-flex justify-content-center align-items-center" style="height:105vh">
       <div class="col-8 my-5" style="text-align:left">
         <h5 id="D2" class="my-5 py-5">Welcome to Jungle!
           <span class="fa-lg spin" style="color: #2F959A"><font-awesome-icon class="big-icon" :icon="['fab', 'pagelines']" spin/></span>
@@ -13,7 +15,7 @@
           </button>
           <div class="d-flex">
             <div id="D2" class="pt-2">Don't have an JUNGLE ID?</div>
-            <div><router-link class="nav-link" :to="{ name: 'Signup'}">Create one now</router-link></div>
+            <div><router-link @click="DAY_ANIMATION" class="nav-link" :to="{ name: 'Signup'}">Create one now</router-link></div>
           </div>
         </div>
       </div>
@@ -86,5 +88,9 @@ font-family: 'Reggae One', cursive;
 font-weight: 500;
 line-height: 1.5;
 color: inherit;
+}
+
+.backgroundlogin {
+  background-image: linear-gradient(#0c2f4d 80%, #0f051d 100%);
 }
 </style>

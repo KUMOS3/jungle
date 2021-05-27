@@ -66,7 +66,7 @@
             </div>
           </div>
           </div>
-          {{ this.$store.state.userInfo.like_movies }}
+          <!-- {{ this.$store.state.userInfo.like_movies }} -->
         </div>
 
 
