@@ -1,8 +1,15 @@
 <template>
   <div class="mb-3 col-xs-12 col-sm-6 col-lg-4 px-4 my-5">
+
+    <!-- 업적 alert -->
+    <div v-if="this.acheNow.status" class="alert alert-dismissible alert-primary Reggae" :class={showache:this.acheNow.status}>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      Congratulations! <br> New JUNGLER's Title:
+      <br><strong>"{{ this.acheNow.ache.name}}"</strong>
+    </div>
     <!-- 영화 포스터 -->
     <div class="card border-light">
-      <a @click="showDetail"><img :src="moviePosterURL" class="card-img-top" style="height: 380px" alt=""></a>
+      <a @click="showDetail"><img :src="moviePosterURL" class="card-img-top" style="height: 50vh" alt=""></a>
       <div class="card-body">
         <div v-if="this.$store.state.userToken">
           <MovieDetail
@@ -19,7 +26,7 @@
           />
         </div>
 
-        <div class="card d-flex">
+        <div class="card d-flex" style="border:0px">
           <div class="row justify-content-center">
           <!-- 좋아요 기능 -->
             <div @click="likeMovie"  :class="{ 'border-primary': likeStatus }" class="col-5 card py-2 movie-btn" style="max-width: 20rem;">
@@ -62,12 +69,13 @@ export default {
     return {
       modalStatus: false,
       likeStatus: null,
-      likedMovie: null,
       dislikeStatus: null,
-      dislikedMovie: null,
       wishStatus: null,
-      wishedMovie: null,
       previewURL: null,
+      acheNow: {
+        ache: null,
+        status: false
+      },
     }
   },
   props: {
@@ -140,13 +148,20 @@ export default {
             this.wishStatus = res.data.wished
               this.userid = this.$store.getters.decodedToken.user_id
               this.$store.dispatch('getUserInfo', this.userid)
-
           })
           .catch((err) => {
             console.log(err)
           })
       }
     },
+    // // like한 후 비동기적으로 user
+    // getLikeUserinfo: function (this.userid) {
+    //   var _this = this
+    //   return new Promise(function (resolve) {
+    //     _this.$store.dispatch('getUserInfo', this.userid)
+    //     resolve()
+    //   })
+
     likeMovie: function () {
       if (this.$store.state.userToken) {
         axios({
@@ -157,14 +172,24 @@ export default {
           },
         })
           .then((res) => {
-            this.likedMovie = res.data
+            
             if (this.likeStatus==false && this.dislikeStatus==true) {
               this.dislikeStatus=!this.dislikeStatus
-            }
+            } else {
             this.likeStatus = !this.likeStatus
               this.userid = this.$store.getters.decodedToken.user_id
               this.$store.dispatch('getUserInfo', this.userid)
-              this.$emit('achieve')
+              // this.$emit('achieve')
+            }
+            if (res.data.achievements) {
+              let beforeAches = this.$store.state.userInfo.achievements
+              if (beforeAches.length < res.data.achievements.length) {
+                this.acheNow.ache = res.data.achievements[res.data.achievements.length-1]
+                this.acheNow.status = true
+                console.log(this.acheNow)
+              }
+            }
+            
           })
           .catch((err) => {
             console.log(err)
@@ -181,7 +206,7 @@ export default {
           },
         })
           .then((res) => {
-            this.dislikedMovie = res.data
+            console.log(res.data)
             if (this.dislikeStatus==false && this.likeStatus==true) {
               this.likeStatus=!this.likeStatus
             }
@@ -189,13 +214,13 @@ export default {
             this.dislikeStatus = !this.dislikeStatus
               this.userid = this.$store.getters.decodedToken.user_id
               this.$store.dispatch('getUserInfo', this.userid)
-              this.$emit('achieve')
           })
           .catch((err) => {
             console.log(err)
           })
       }
     },
+
     wishMovie: function () {
       if (this.$store.state.userToken) {
         axios({
@@ -206,11 +231,10 @@ export default {
           },
         })
           .then((res) => {
-            this.wishedMovie = res.data
+            console.log(res.data)
             this.wishStatus = !this.wishStatus
               this.userid = this.$store.getters.decodedToken.user_id
               this.$store.dispatch('getUserInfo', this.userid)
-              this.$emit('achieve')
           })
           .catch((err) => {
             console.log(err)
@@ -253,5 +277,8 @@ export default {
 .big-icon:active {
   transform: scale(0.1);
   opacity: 0.5;
+}
+.showache {
+  display: block;
 }
 </style>

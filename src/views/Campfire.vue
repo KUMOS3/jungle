@@ -60,6 +60,11 @@ export default {
   created: function () {
     this.CHANGE_COLOR('night')
     document.body.style.backgroundImage = "linear-gradient( #44009d 80%,  #13002C 100% )"
+  },
+  mounted () {
+    window.scrollTo(0, 0)
+    document.documentElement.style.overflowY = 'scroll';
+    document.body.scroll = "yes";
   }
 }
 </script>

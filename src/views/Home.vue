@@ -1,23 +1,22 @@
 <template>
   <div>
-    <div class="alert alert-dismissible alert-primary Reggae">
-      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-      <strong>Well done!</strong> You are ready to be a JUNGLER! 
-      <router-link :to="{ name: 'Login'}"> Login</router-link>
+    <div v-if="this.$store.state.userToken">
+      <h5 id="D2"  class="my-5">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</h5>
     </div>
-
-    <h5 id="D2" v-if="this.$store.state.userToken" class="my-5">Welcome to Jungle, {{ this.$store.state.userInfo.nickname }}!</h5>
-    <div v-else class="d-flex justify-content-center align-items-center">
-      <div class="col-8" style="text-align:left">
-        <h5 id="D2" class="my-5">Welcome to Jungle!
+    <div v-else class="d-flex justify-content-center align-items-center" style="height:105vh">
+      <div class="col-8 my-5" style="text-align:left">
+        <h5 id="D2" class="my-5 py-5">Welcome to Jungle!
           <span class="fa-lg spin" style="color: #2F959A"><font-awesome-icon class="big-icon" :icon="['fab', 'pagelines']" spin/></span>
         </h5>
         <h1>Let's Jungling!</h1>
-        <div class="d-grid gap-2 my-5">
-          <button class="btn btn-lg btn-light mt-5 mb-2" type="button">
+        <div class="d-grid gap-4 my-5">
+          <button class="btn btn-lg btn-light" type="button">
             <router-link class="nav-link" :to="{ name: 'Login'}">Login</router-link>
           </button>
-          <p class="text-light">Don't have an JUNGLE ID? Create one now</p>
+          <div class="d-flex">
+            <div id="D2" class="pt-2">Don't have an JUNGLE ID?</div>
+            <div><router-link @click="DAY_ANIMATION" class="nav-link" :to="{ name: 'Signup'}">Create one now</router-link></div>
+          </div>
         </div>
       </div>
     </div>
@@ -42,6 +41,11 @@ export default {
   created: function () {
     this.CHANGE_COLOR('day')
     document.body.style.backgroundImage = "linear-gradient( #0C2F4D 80%,  #092742 100% )"
+  },
+  mounted () {
+    window.scrollTo(0, 0)
+    document.documentElement.style.overflowY = 'scroll';
+    document.body.scroll = "yes";
   }
 }
 
@@ -84,5 +88,9 @@ font-family: 'Reggae One', cursive;
 font-weight: 500;
 line-height: 1.5;
 color: inherit;
+}
+
+.backgroundlogin {
+  background-image: linear-gradient(#0c2f4d 80%, #0f051d 100%);
 }
 </style>

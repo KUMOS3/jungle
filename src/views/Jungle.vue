@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 100px">
+  <div style="margin-top: 100px" v-if="this. $store.state.imagetoggle == 1">
   <section class="bg">
     <div class="center">
       <img src="@/assets/jungle_animation/layer1.png" class="move-in-1" id="layer1">
@@ -22,6 +22,13 @@
 
 export default {
   name: 'Jungle',
+  mounted () {
+    window.scrollTo(0, 0)
+  },
+  created () {
+    document.documentElement.style.overflow = 'hidden';
+    document.body.scroll = "no";
+  },
 }
 </script>
 

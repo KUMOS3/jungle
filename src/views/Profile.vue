@@ -52,6 +52,11 @@ export default {
       'CHANGE_COLOR'
     ])
   },
+  mounted () {
+    window.scrollTo(0, 0)
+    document.documentElement.style.overflowY = 'scroll';
+    document.body.scroll = "yes";
+  }
 }
 </script>
 

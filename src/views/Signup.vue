@@ -269,8 +269,8 @@ export default {
       })
         .then ((res) => {
           console.log(res)
+          this.$store.state.signupState = true
           this.$router.push({ name: 'Login' })
-          alert('회원가입이 완료되었습니다.')
         })
         .catch ((err) => {
           console.log(err)
@@ -286,6 +286,11 @@ export default {
     if (this.$store.state.userToken) {
       this.getUserInfo()
     }
+  },
+  mounted () {
+    window.scrollTo(0, 0)
+    document.documentElement.style.overflowY = 'scroll';
+    document.body.scroll = "yes";
   }
 }
 </script>

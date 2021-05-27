@@ -4,42 +4,69 @@
     <div class="modal show" style="display:block" tabindex="1">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header d-flex justify-content-between">
-            <h5 class="modal-title fs-2">{{ review.movie.title }}</h5>
+          <div class="modal-header">
             <button @click="closeDetail" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
-            <h2 class="mb-3 fs-2"></h2>
-            <h5>user: {{ review.user }}</h5><h5 class="text-muted">My Rate: {{ review.movie_rate }}.0</h5>
-
-          <div class="d-flex justify-content-between mt-5 mb-2">
-            <h2 class="mb-3 fs-2">{{ review.title }}</h2> 
-          </div>
-          <h4 class="mb-3">{{ review.content }} commentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.contentcommentInfo.content</h4>
-          
-          <div class="d-flex justify-content-between">
-            <!-- like -->
-            <div @click="callLike" class="review-like-btn d-flex align-items-center">
-              <button v-if="likeStatus"><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#fd7e14" /></button>
-              <button v-else><font-awesome-icon :icon="['fas', 'fire-alt']" style="color:#dbdad9" /></button>
-              <p v-if="this.$store.state.userToken" class="me-2">{{ this.$store.state.userInfo.like_Reviews }}</p>
-              <h5>{{ review.review_like_users }} users like this review</h5>
+          <!-- modal card -->
+          <div class="card mb-3 d-flex">
+            <div class="row g-0">
+              <div class="col-md-3 offset-1">
+              <img :src="moviePosterURL" style="width: 13vw">
+              <!-- {{ moviePosterURL }} -->
+              </div>
+              <div class="col-md-5">
+                <div class="card-body">
+                  <!-- <p>{{this.review.user}}</p> -->
+                  <h2 class="mb-3">{{ this.review.movie.original_title }}</h2>
+                  <p class="card-text black-text"><small class="text-end">Release date:  {{this.review.movie.release_date}}</small></p>
+                  <p class="card-text black-text"><small class="text-end">Rate :  {{this.review.movie.vote_average}}</small></p>
+                </div>
+              </div>
             </div>
-            <h5 class="card-text"><small class="text-muted">Created at {{ getTime }}</small></h5>          
           </div>
+          <div class="d-flex justify-content-between mx-5 mt-5">
+            <h2 class="mb-3">{{ review.title }}</h2> 
+            <h2>user: {{this.review.user.nickname}}</h2>
+          </div>
+          <p class="mb-4 mx-4">{{ review.content }}</p>    
+          <h6 class="card-subtitle text-muted text-end"><small class="text-muted">Created at {{ getTime }}</small></h6>          
+
+
+          <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-between">
+              <div>
+                <div @click="callLike" 
+                  :class="{ 'border-primary': likeStatus }" class="review-like-btn card py-2" 
+                  style="max-width: 20rem;"
+                >
+                  <div v-if="likeStatus" class="mx-auto">
+                    <font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#fd7e14" />
+                  </div>
+                  <div v-else class="mx-auto">
+                    <div><font-awesome-icon :icon="['fas', 'fire-alt']" class="big-icon" style="color:#dbdad9" /></div>
+                  </div>
+                </div>
+                <h6 class="card-subtitle text-muted my-2"><small>Whether you like <br> or dislike this REVIEW, <br> kindle it!</small></h6>
+              </div>
+            </div>
+            </div>
+
+
           <!-- 댓글 -->
-          <div class="d-flex justify-content-between mt-5">
+          <div class="d-flex justify-content-between mt-5 mx-4">
             <h3>Comments</h3>
             <h5 v-if="this.review.comments">{{ CommentsCount }} comments</h5>
             <h5 v-else>There is no comments</h5>
           </div>
-          <div class="input-group mb-5 mt-3">
+          <div class="input-group mb-5 mx-4">
             <input type="text" class="form-control" v-model="commentInfo.content" @keyup.enter="createComment" placeholder="How do you feel? :)" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" @keyup.enter="createComment" @click="createComment">Button</button>
+            <button class="btn btn-light me-5" type="button" id="button-addon2" @keyup.enter="createComment" @click="createComment">Submit</button>
           </div>
+
           <div v-for="(comment, id) in review.comments" :key=id>
-            <h5 class="me-3 mt-3 text-light bg-dark p-1 rounded text-center" style="width: 8vw">user: {{ comment.id }}</h5><h5> {{ comment.content }}</h5>
+            <span class="ms-4 mt-3 btn-light p-1 rounded text-center" style="width: 8vw">user: {{ comment.id }}</span>
+            <span class="mx-4 mt-3"> {{ comment.content }}</span>
           </div>
           </div>
           <div class="modal-footer mb-5">
@@ -133,16 +160,7 @@ export default {
       return this.review.comments.length
     },
     moviePosterURL: function () {
-      return `https://image.tmdb.org/t/p/w500/${this.$store.state.movie.poster_path}`
-    },
-    movieReleaseDate: function () {
-      let movieReleaseDate = ''
-      for (var date in this.$store.state.movies) {
-        if (this.$store.state.movies[date].id == this.review.movie) {
-          movieReleaseDate += this.$store.state.movies[date].release_date
-        }
-      }
-      return movieReleaseDate
+      return `https://image.tmdb.org/t/p/w500/${this.review.movie.poster_path}`
     },
     movieTitle: function () {
       let movieItem = ''
@@ -162,11 +180,21 @@ export default {
 </script>
 
 <style>
-  .modal {
-    margin-top: 5vh;
-    text-align: start;
-  }
-  #close {
-    pointer-events: none;
-  }
+.modal {
+  margin-top: 5vh;
+  text-align: start;
+}
+
+.big-icon {
+  transition: 0.1s;
+}
+.big-icon:active {
+  transform: scale(0.1);
+  opacity: 0.5;
+}
+
+.review-like-btn {
+  box-shadow: 0 0 2px rgba(241, 250, 110, 0.9), 0 0 4px rgba(241, 250, 110, 0.4),
+  0 0 1rem rgba(241, 250, 110, 0.3), 0 0 4rem rgba(241, 250, 110, 0.1);
+}
 </style>

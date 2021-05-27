@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="d-flex justify-content-center align-items-center">
-      <div class="col-8 my-5" style="text-align:left">
+    <div class="my-5 py-2 d-flex justify-content-center align-items-center">
+      <div class="col-8 my-5 py-5" style="text-align:left">
         <h2> Profile of </h2>
         <h1 class="mb-5"> Jungler {{ this.$store.state.userInfo.nickname }}
           <span class="spi" style="color: #2F959A"><font-awesome-icon class="big-icon" :icon="['fab', 'pagelines']" spin/></span>
@@ -9,7 +9,6 @@
 
 
         <div v-if="this.$store.state.userToken" class="D2 py-5 px-4 border-light" style="font-size: 20px;">
-          <!-- <p>{{ this.$store.state.userInfo }}</p> -->
           <span class="shine">ID:  </span><span>{{ this.$store.state.userInfo.username }}</span>
           <br>
           <span class="shine">Jungler's Name:  </span><span>{{ this.$store.state.userInfo.nickname }}</span>
