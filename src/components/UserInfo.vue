@@ -22,6 +22,7 @@
 
           <div class="d-flex">
           <div v-if="this.$store.state.userToken" class="D2 mx-auto my-5 row">
+            
             <div class="col collect-list">
               <div class="my-3 d-flex justify-content-between">
                 <span class="shine-list">Liked Movies</span>
@@ -36,6 +37,7 @@
               </select>
               <button class="shine-list btn-primary row mt-3 mb-1 mx-auto" @click="goMovieDetail">GO</button>
             </div>
+
             <div class="col collect-list">
               <div class="my-3 d-flex justify-content-between">
                 <span class="shine-list">Disliked Movies</span>
@@ -50,6 +52,7 @@
               </select>
               <button class="shine-list btn-primary row mt-3 mb-1 mx-auto" @click="goMovieDetail">GO</button>
             </div>
+
             <div class="col collect-list">
               <div class="my-3 d-flex justify-content-between">
                 <span class="shine-list">Wish List</span>
@@ -64,12 +67,10 @@
               </select>
               <button class="shine-list btn-primary row mt-3 mb-1 mx-auto" @click="goMovieDetail">GO</button>
             </div>
+
           </div>
           </div>
-          <!-- {{ this.$store.state.userInfo.like_movies }} -->
         </div>
-
-
       </div>
     </div>
   </div>
